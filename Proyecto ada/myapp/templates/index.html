@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+  integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="crossorigin=""/><meta charset="utf-8">
+</head>
+<body>
+  <header></header>
+  <seccion class="left">
+    <button id="mostrarmap" class="botton"> Mapa  </button>
+    <button id="mostrargraficos" class="botton"> Graficos </button>
+    <button id="mostrarcontactos" class="botton"> Contactos </button>
+  </seccion>
+  <section class="principal">
+      <div id="mostrarmap" class="ppal oculto">
+        <div id="map"></div>
+      </div>
+        <div id="mostrargraficos">
+          <div id="graficos"></div>
+        </div>
+        <div id="mostrarcontactos">
+          <div id="contactos"></div>
+        </div>
+  </section>
+  <footer></footer>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="crossorigin=""></script>
+<script src="{% static 'script.js' %}"></script>
+</body>
+</html>
