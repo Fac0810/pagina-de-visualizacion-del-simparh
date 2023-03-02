@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from .models import Estacion
 
 
 # Create your views here.
 
 def index(request):
+    e = Estacion.objects.all()
+    print(e)
     return render(request, 'index.html')
 
 

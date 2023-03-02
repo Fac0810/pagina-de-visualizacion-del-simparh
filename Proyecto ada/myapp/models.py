@@ -11,7 +11,7 @@ class Estacion(models.Model):
     ubicacion = models.CharField(max_length=100, null=True, blank=True)
     desde = models.DateField(null=True, blank=True)
     hasta = models.DateField(null=True, blank=True)
-    fuente = models.CharField(max_length=100, null=True, blank=True)
+    fuente = models.CharField(max_length=10, null=True, blank=True)
     longitud = models.DecimalField(max_digits=15,decimal_places=12, null=True, blank=True)
     latitud = models.DecimalField(max_digits=15,decimal_places=12, null=True, blank=True)
 
