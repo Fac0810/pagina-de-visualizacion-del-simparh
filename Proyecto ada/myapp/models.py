@@ -49,11 +49,3 @@ class Medicion(models.Model):
     def __srt__(self):
         return 'Medicion de '+ self.estacion + ' en la fecha ' + self.fecha
 
-
-
-class Prueba(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    nombre =models.CharField(max_length=50)
-    
-    def __str__(self):
-        return self.nombre
