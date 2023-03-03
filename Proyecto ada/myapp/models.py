@@ -1,7 +1,10 @@
+import json
 from django.db import models
 
 
 # Create your models here.
+
+
 
 
 class Estacion(models.Model):
@@ -18,6 +21,10 @@ class Estacion(models.Model):
 
     def __str__(self):
         return self.nombre
+
+
+            
+
 
 class Medicion(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -41,7 +48,9 @@ class Medicion(models.Model):
 
     def __srt__(self):
         return 'Medicion de '+ self.estacion + ' en la fecha ' + self.fecha
-    
+
+
+
 class Prueba(models.Model):
     id = models.BigAutoField(primary_key=True)
     nombre =models.CharField(max_length=50)
