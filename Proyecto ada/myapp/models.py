@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 
 
-
+#creamos los modelos de las clases que necesitamos para trabajar el mapa
 
 class Estacion(models.Model):
     id = models.BigAutoField(primary_key=True)
