@@ -1,0 +1,85 @@
+
+{% load static %}
+<html>
+<div class="contenedor">
+<link rel="stylesheet" href="{% static 'stylecontacto.css' %}">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+  integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="crossorigin=""/><meta charset="utf-8">
+<div class="centrado"><h1>Contacto</h1></div>
+</div>
+<head>
+
+
+<img src="{% static 'teclado1.jpg' %}">
+</head>
+<body>
+    <section class="principal" id="opciones">
+        <div id="Elegir Asunto" class="ppal oculto">
+          <div>Asunto*</div>
+            <select name="asunto.tipo">
+          {% block content %}
+          <option value="---"></option>
+          {% for asunto in asunto %}
+      
+          <option value="value1" name="asunto.tipo">{{ asunto.tipo }}</option>
+          
+          {% endfor %}
+         
+          </select>
+          
+          
+        </div>
+          <div id="Insertar Nombre Completo">Nombre Completo*</div>
+            <input type="text" name="nombre">
+        
+        
+          <div id="Insertar Residencia">
+            <div id="Residencia">Ciudad de residencia*</div>
+            <input type="text" name="ciudad">
+          </div>
+          <div id="Insertar Email">
+            <div id="Email">Email de contacto *</div>
+            <input type="text" name="email">
+          </div>
+          <div id="Insertar Email2">
+            <div id="Email2">Reingrese email *</div>
+            <input type="text" name="email">
+          </div>
+          <div id="Insertar Telefono">
+            <div id="Telefono">Teléfono de contacto *</div>
+            <input type="text" name="telefono">
+          </div>
+          <div id="Insertar Mensaje">
+            <div id="Mensaje">Mensaje *</div>
+            <input type="text" name="mensaje">
+          </div>
+
+          
+          
+          
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+
+          
+
+        {% endblock %}
+       
+
+
+         
+            
+            
+          
+
+
+  
+
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="crossorigin=""></script>
+    <script src="{% static 'scriptcontactos.js' %}"></script>
+</body>
+</html>
+
+
+

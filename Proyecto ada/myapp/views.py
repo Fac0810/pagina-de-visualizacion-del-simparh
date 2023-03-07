@@ -1,8 +1,11 @@
 import json
+from django import forms
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
-from .models import Estacion, Medicion
+from django.http import HttpResponse, JsonResponse, HttpRequest
+from .models import Estacion, Medicion, Contacto
+from .models import Asunto
 from django.views import View
+
 
 
 
@@ -11,6 +14,10 @@ from django.views import View
 
 def index(request):
     return render(request, 'index.html')
+
+def contacto(request):
+    asunto = Asunto.objects.values()
+    return render(request, 'contacto.html', {'asunto':asunto})
 
 # Hago el json de las estaciones 
 class EstacionesView(View):
@@ -42,3 +49,7 @@ class MedicionesView(View):
         pass
     def delete(self, request):
         pass
+
+
+def Graficos(request):
+    return render(request, 'prueba.html')

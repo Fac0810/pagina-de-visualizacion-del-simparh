@@ -38,7 +38,7 @@ success: (data) => {
     for (i in data.estaciones){
         //este for es para recorrer la api y sacar los datos necesarios
         //console.log(data.estaciones[i].nombre);
-        $('#graficos').text(data.estaciones[i].latitud + data.estaciones[i].longitud);
+        
         latitud = data.estaciones[i].latitud;
         longitud = data.estaciones[i].longitud;
         nombre = data.estaciones[i].nombre;

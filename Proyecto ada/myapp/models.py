@@ -2,6 +2,7 @@ import json
 from django.db import models
 
 
+
 # Create your models here.
 
 
@@ -23,9 +24,7 @@ class Estacion(models.Model):
         return self.nombre
 
 
-            
-
-
+ 
 class Medicion(models.Model):
     id = models.BigAutoField(primary_key=True)
     estacion = models.CharField(max_length=100)
@@ -48,4 +47,35 @@ class Medicion(models.Model):
 
     def __srt__(self):
         return 'Medicion de '+ self.estacion + ' en la fecha ' + self.fecha
+    
 
+
+class Asunto(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    tipo = models.CharField(max_length=100)
+   
+    def __srt__(self):
+        return self.tipo
+    
+
+
+
+class Contacto(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    asunto = models.ForeignKey(Asunto, on_delete=models.CASCADE)
+    nombre = models.CharField(max_length=100, null=True)
+    ciudad= models.CharField(max_length=100, null=True)
+    email = models.EmailField(max_length=100, null=True)
+    telefono = models.DecimalField(max_digits=15,decimal_places=3, null=True)
+    mensaje = models.CharField(max_length=950, null=True)
+
+    def __str__(self):
+        return self
+    
+
+
+    
+
+
+
+   
