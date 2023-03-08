@@ -2,8 +2,7 @@ import json
 from django import forms
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, HttpRequest
-from .models import Estacion, Medicion, Contacto
-from .models import Asunto
+from .models import Estacion, Medicion, Contacto, Asunto
 from django.views import View
 
 
@@ -16,8 +15,19 @@ def index(request):
     return render(request, 'index.html')
 
 def contacto(request):
-    asunto = Asunto.objects.values()
-    return render(request, 'contacto.html', {'asunto':asunto})
+    if request.method== "POST":
+        parametros=request.POST
+        #parametros.dict()
+        asu=eval(parametros.get("asunto"))
+        print(asu)
+        print("-----")
+        print(parametros)
+        print("-----")
+        contactoParaGuardar=Contacto(asunto=Asunto.objects.get(id=asu.get("id")), nombre=parametros.get("nombre"),ciudad=parametros.get("ciudad"),email=parametros.get("email"),telefono=parametros.get("telefono"),mensaje=parametros.get("mensaje"))
+        contactoParaGuardar.save()
+        return render(request, 'exito.html')
+    asuntos = Asunto.objects.values()
+    return render(request, 'contacto.html', {'asunto':asuntos})
 
 # Hago el json de las estaciones 
 class EstacionesView(View):
@@ -51,5 +61,5 @@ class MedicionesView(View):
         pass
 
 
-def Graficos(request):
+def graficos(request):
     return render(request, 'prueba.html')

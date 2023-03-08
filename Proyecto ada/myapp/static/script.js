@@ -29,7 +29,7 @@ let nombre = '';
 var map = L.map('map').setView([-36,-80], 6);
 var marker = 0;
 //funcion ajax para recorrer la api generada anteriormente y sacar los datos que necesito de las estacines
-const url = 'http://127.0.0.1:8000/ListaEstaciones/';
+const url = 'http://127.0.0.1:8000/listaEstaciones/';
 $.ajax({
 url: url,
 type: 'GET',

@@ -62,8 +62,8 @@ class Asunto(models.Model):
 
 class Contacto(models.Model):
     id = models.BigAutoField(primary_key=True)
-    asunto = models.ForeignKey(Asunto, on_delete=models.CASCADE)
-    nombre = models.CharField(max_length=100, null=True)
+    asunto = models.ForeignKey(Asunto, on_delete=models.CASCADE, blank=False)
+    nombre = models.CharField(max_length=100, null=True, blank=False)
     ciudad= models.CharField(max_length=100, null=True)
     email = models.EmailField(max_length=100, null=True)
     telefono = models.DecimalField(max_digits=15,decimal_places=3, null=True)
