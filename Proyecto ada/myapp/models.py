@@ -8,6 +8,8 @@ from django.db import models
 
 #creamos los modelos de las clases que necesitamos para trabajar el mapa
 
+
+
 class Estacion(models.Model):
     id = models.BigAutoField(primary_key=True)
     estacion = models.CharField(max_length=100)
@@ -27,8 +29,7 @@ class Estacion(models.Model):
  
 class Medicion(models.Model):
     id = models.BigAutoField(primary_key=True)
-    estacion = models.CharField(max_length=100)
-    #estacion = models.ForeignKey(Estacion, on_delete=models.CASCADE)
+    estacion = models.CharField(max_length=100, default="0000")
     fecha = models.DateField(null=True, blank=True)
     tmax = models.DecimalField(max_digits=5,decimal_places=3, null=True, blank=True)
     tmin = models.DecimalField(max_digits=5,decimal_places=3, null=True, blank=True)
@@ -42,6 +43,7 @@ class Medicion(models.Model):
     presion_nivel_estacion = models.DecimalField(max_digits=10,decimal_places=5, null=True, blank=True)
     humedad_relativa = models.DecimalField(max_digits=10,decimal_places=5, null=True, blank=True)
     cant_datos_promedio = models.DecimalField(max_digits=5,decimal_places=3, null=True, blank=True)
+    estacion_id = models.ForeignKey(Estacion, on_delete=models.CASCADE, default=1)
     
     
 

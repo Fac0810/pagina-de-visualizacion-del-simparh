@@ -43,7 +43,7 @@ success: (data) => {
         longitud = data.estaciones[i].longitud;
         nombre = data.estaciones[i].nombre;
         marker = L.marker([latitud, longitud]).addTo(map);
-        marker.bindPopup("NOMBRE :" + nombre).openPopup();
+        marker.bindPopup("NOMBRE :" + nombre);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
