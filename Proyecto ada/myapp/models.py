@@ -1,6 +1,5 @@
-import json
 from django.db import models
-
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 # Create your models here.
@@ -66,11 +65,11 @@ class Contacto(models.Model):
     id = models.BigAutoField(primary_key=True)
     asunto = models.ForeignKey(Asunto, on_delete=models.CASCADE, blank=False)
     nombre = models.CharField(max_length=100, null=True, blank=False)
-    localidad= models.CharField(max_length=100, null=True)
-    partido= models.CharField(max_length=100, null=True)
-    email = models.EmailField(max_length=100, null=True)
-    telefono = models.DecimalField(max_digits=15,decimal_places=3, null=True)
-    mensaje = models.CharField(max_length=950, null=True)
+    localidad= models.CharField(max_length=100, null=True, blank=False)
+    partido= models.CharField(max_length=100, null=True, blank=False)
+    email = models.EmailField(max_length=100, null=True, blank=False)
+    telefono = PhoneNumberField(null =True, blank=False)
+    mensaje = models.TextField(null =True, blank=False)
 
     def __str__(self):
         return self
