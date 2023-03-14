@@ -16,3 +16,16 @@ Participantes:
 	·Sebastian Baldini
 	·Francisco Serra
 	·Luciano Otero Nolte
+
+Necesario installar:
+	Python
+	(en el venv via pip):
+		asgiref                  3.6.0
+		Django                   4.1.7
+		django-phonenumber-field 7.0.2
+		django-phonenumbers      1.0.1
+		phonenumbers             8.13.7
+		pip                      23.0.1
+		setuptools               65.5.0
+		sqlparse                 0.4.3
+
