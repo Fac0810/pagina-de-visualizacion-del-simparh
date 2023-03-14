@@ -12,11 +12,11 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Estacion(models.Model):
     id = models.BigAutoField(primary_key=True)
     estacion = models.CharField(max_length=100)
-    nombre = models.CharField(max_length=100, null=True, blank=True)
-    ubicacion = models.CharField(max_length=100, null=True, blank=True)
-    desde = models.DateField(null=True, blank=True)
-    hasta = models.DateField(null=True, blank=True)
-    fuente = models.CharField(max_length=10, null=True, blank=True)
+    nombre = models.CharField(max_length=100, null=True)
+    ubicacion = models.CharField(max_length=100, null=True)
+    desde = models.DateField(null=True)
+    hasta = models.DateField(null=True)
+    fuente = models.CharField(max_length=10, null=True)
     longitud = models.DecimalField(max_digits=15,decimal_places=12, null=True, blank=True)
     latitud = models.DecimalField(max_digits=15,decimal_places=12, null=True, blank=True)
 
@@ -46,16 +46,16 @@ class Medicion(models.Model):
     
     
 
-    def __srt__(self):
+    def __str__(self):
         return 'Medicion de '+ self.estacion + ' en la fecha ' + self.fecha
     
 
 
 class Asunto(models.Model):
     id = models.BigAutoField(primary_key=True)
-    tipo = models.CharField(max_length=100)
+    tipo = models.CharField(max_length=100, null=False)
    
-    def __srt__(self):
+    def __str__(self):
         return self.tipo
     
 
@@ -72,8 +72,12 @@ class Contacto(models.Model):
     mensaje = models.TextField(null =True, blank=False)
 
     def __str__(self):
-        return self
+        return self.nombre + " :" + self.asunto
     
+    def transformador(self):
+        self.localidad= self.localidad.lower().title()
+        self.partido= self.partido.lower().title()
+        self.nombre= self.nombre.lower().title()
 
 
     

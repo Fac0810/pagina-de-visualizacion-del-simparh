@@ -12,38 +12,11 @@
   </head>
 
   <body>
-    <form action="/contacto/" method="POST">{% csrf_token %}
-      
-      <div id="Elegir Asunto" class="ppal oculto">
-        <div>Asunto*</div>
-        <select name="asunto">
-          <option value="---"></option>
-          {% for asunto in asunto %}
-            <option value="{{asunto}}" name={{asunto.tipo}}>{{ asunto.tipo }}</option>
-          {% endfor %}
-        </select>
-      </div>
-
-      <div id="Insertar Nombre Completo">Nombre Completo*</div>
-      <input type="text" name="nombre">
-          
-      <div id="Residencia">Ciudad de residencia*</div>
-      <input type="text" name="ciudad">
-      
-      <div id="Email">Email de contacto *</div>
-      <input type="text" name="email">
-
-      <div id="Email2">Reingrese email *</div>
-      <input type="text" name="email">
-
-      <div id="Telefono">Teléfono de contacto *</div>
-      <input type="text" name="telefono">
-
-      <div id="Mensaje">Mensaje *</div>
-      <input type="text" name="mensaje">
-      
+    <form action="" method="POST">{% csrf_token %}
+      <table>
+        {{form.as_table}}
+      </table>
       <button type="submit" >Enviar</button>
-
     </form>
   </body>
 </html>

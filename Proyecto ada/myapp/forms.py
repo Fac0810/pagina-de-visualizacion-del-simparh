@@ -1,8 +1,10 @@
 from django import forms
-from models import Asunto
+from .models import Asunto
 from phonenumber_field.formfields import PhoneNumberField
 
-class formularioContacto(forms.Form):
+#Aca se crean los formularios que sean necesarios
+
+class FormularioContacto(forms.Form):
 
     asunto = forms.ModelChoiceField(queryset=None)
     nombre = forms.CharField()
@@ -10,7 +12,7 @@ class formularioContacto(forms.Form):
     partido = forms.CharField()
     email = forms.EmailField()
     telefono = PhoneNumberField()
-    mensaje =forms.TextInput()
+    mensaje =forms.CharField()
 
 
     def __init__(self, *args, **kwargs):

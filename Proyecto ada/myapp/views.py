@@ -1,9 +1,8 @@
-import json
-from django import forms
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse, HttpRequest
-from .models import Estacion, Medicion, Contacto, Asunto
+from django.http import JsonResponse
+from .models import Estacion, Medicion, Contacto
 from django.views import View
+from .forms import FormularioContacto
 
 
 
@@ -14,20 +13,19 @@ from django.views import View
 def index(request):
     return render(request, 'index.html')
 
+#Se utiliza para el fromulario de contacto
 def contacto(request):
     if request.method== "POST":
-        parametros=request.POST
-        #parametros.dict()
-        asu=eval(parametros.get("asunto"))
-        print(asu)
-        print("-----")
-        print(parametros)
-        print("-----")
-        contactoParaGuardar=Contacto(asunto=Asunto.objects.get(id=asu.get("id")), nombre=parametros.get("nombre"),ciudad=parametros.get("ciudad"),email=parametros.get("email"),telefono=parametros.get("telefono"),mensaje=parametros.get("mensaje"))
-        contactoParaGuardar.save()
-        return render(request, 'exito.html')
-    asuntos = Asunto.objects.values()
-    return render(request, 'contacto.html', {'asunto':asuntos})
+        formulario=FormularioContacto(request.POST)
+        if formulario.is_valid():
+            informacion=formulario.cleaned_data
+            contactoParaGuardar=Contacto(asunto=informacion['asunto'],nombre=informacion['nombre'],localidad=informacion['localidad'],partido=informacion['partido'],email=informacion['email'],telefono=informacion['telefono'],mensaje=informacion['mensaje'])
+            contactoParaGuardar.transformador()
+            contactoParaGuardar.save()
+            return render(request, 'exito.html')
+    else:
+        formulario=FormularioContacto()
+    return render(request,'contacto.html',{"form":formulario})
 
 # Hago el json de las estaciones 
 class EstacionesView(View):
