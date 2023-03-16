@@ -26,7 +26,7 @@ let latitud = 0;
 let longitud = 0;
 let nombre = '';
 //declaro al mapa en esta zona
-var map = L.map('map').setView([-36.316356,-60.172720], 6);
+var map = L.map('map').setView([-41.316356,-58.172720], 6);
 var marker = 0;
 //funcion ajax para recorrer la api generada anteriormente y sacar los datos que necesito de las estacines
 const url = 'http://127.0.0.1:8000/listaEstaciones/';
