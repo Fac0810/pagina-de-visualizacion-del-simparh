@@ -1,0 +1,38 @@
+{% block content %}
+<table>
+    <tr>
+        <th>Fecha</th>
+        <th>Temp max</th>
+        <th>Temp min</th>
+        <th>Temp med</th>
+        <th>pp_mm</th>
+        <th>Heliofinia</th>
+        <th>Viento max direc</th>
+        <th>Viento max inten</th>
+        <th>Viento med</th>
+        <th>Temp rocio media</th>
+        <th>Presion</th>
+        <th>Humedad relativa</th>
+        <th>Cant datos prom</th>
+    </tr>
+{% for medicion in mediciones %}
+    <tr>
+        <td>{{ medicion.fecha }}</td>
+        <td>{{ medicion.tmax }}</td>
+        <td>{{ medicion.tmin }}</td>
+        <td>{{ medicion.tmedia }}</td>
+        <td>{{ medicion.pp_mm }}</td>
+        <td>{{ medicion.heliofinia }}</td>
+        <td>{{ medicion.viento_max_direccion }}</td>
+        <td>{{ medicion.viento_max_intensidad }}</td>
+        <td>{{ medicion.viento_medi }}</td>
+        <td>{{ medicion.temp_rocio_media }}</td>
+        <td>{{ medicion.presion_nivel_estacion }}</td>
+        <td>{{ medicion.humedad_relativa }}</td>
+        <td>{{ medicion.cant_datos_promedio }}</td>
+    </tr>
+    
+{% endfor %}
+</table>
+
+{% endblock %}

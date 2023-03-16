@@ -61,3 +61,8 @@ class MedicionesView(View):
 
 def graficos(request):
     return render(request, 'prueba.html')
+
+#esto se utiliza para mostrar las mediciones de una estacion en particular (si tiene)
+def mostrarMediciones(request, id):
+    mediciones=Medicion.objects.filter(estacion_id=id).order_by('fecha')
+    return render(request, 'mediciones.html',{"mediciones":mediciones}) 
