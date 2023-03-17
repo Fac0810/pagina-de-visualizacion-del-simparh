@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from .models import Estacion, Medicion, Contacto
 from django.views import View
 from .forms import FormularioContacto
+from django.db.models import Sum
 
 
 
@@ -58,9 +59,50 @@ class MedicionesView(View):
     def delete(self, request):
         pass
 
-
 def graficos(request):
-    return render(request, 'prueba.html')
+    return render(request, 'graficos.html')
+
+def datos_graficos(request):
+    labels = []
+    data = []
+
+    queryset = Medicion.objects.values('fecha').annotate(tmax=Sum('tmax')).order_by('fecha')
+    for entry in queryset:
+        labels.append(entry['fecha'])
+        data.append(entry['tmax'])
+
+    return JsonResponse(data={
+        'labels': labels,
+        'data': data,
+    })
+"""
+def datos_graficos(request):
+    labels = []
+    data = []
+
+    queryset = Medicion.objects.values('fecha').annotate(tmedia=Sum('tmax')).order_by('fecha')
+    for entry in queryset:
+        labels.append(entry['fecha'])
+        data.append(entry['tmax'])
+    #print(labels)
+    print(data)
+    
+    return JsonResponse(data={
+        'labels': labels,
+        'data': data,
+    })    
+
+    queryset = Medicion.objects.order_by('fecha')
+    for medicion in queryset:
+        labels.append(medicion.fecha)
+        data.append(medicion.tmedia)
+
+    return render(request, 'graficos.html', {
+        'labels': labels,
+        'data': data,
+    })
+"""
+
 
 #esto se utiliza para mostrar las mediciones de una estacion en particular (si tiene)
 def mostrarMediciones(request, id):
