@@ -10,4 +10,5 @@ urlpatterns = [
     path('graficos/',views.graficos),
     path('exito/', views.contacto),
     path('mediciones/<int:id>', views.mostrarMediciones),
+    path('mapakml/', views.mapakml),
 ]

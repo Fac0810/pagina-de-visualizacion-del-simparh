@@ -66,10 +66,10 @@ def datos_graficos(request):
     labels = []
     data = []
 
-    queryset = Medicion.objects.values('fecha').annotate(tmax=Sum('tmax')).order_by('fecha')
+    queryset = Medicion.objects.values('fecha').annotate(temita=Sum('tmax')).order_by('fecha')
     for entry in queryset:
         labels.append(entry['fecha'])
-        data.append(entry['tmax'])
+        data.append(entry['temita'])
 
     return JsonResponse(data={
         'labels': labels,
@@ -108,3 +108,6 @@ def datos_graficos(request):
 def mostrarMediciones(request, id):
     mediciones=Medicion.objects.filter(estacion_id=id).order_by('fecha')
     return render(request, 'mediciones.html',{"mediciones":mediciones}) 
+
+def mapakml(request):
+    return render(request, 'mapakml.html')
