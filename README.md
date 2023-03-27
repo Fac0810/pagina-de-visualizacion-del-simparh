@@ -12,10 +12,13 @@ Objetivos:
 	 medio de un menú de selección
 
 Participantes:
-	·Federico Cadaa
+
+	·Facundo Cadaa
 	·Sebastian Baldini
 	·Franco Serra
 	·Luciano Otero Nolte
+	·Facundo Medina
+	·Iara Caruso
 
 Necesario installar:
 	Python
