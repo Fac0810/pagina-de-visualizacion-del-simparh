@@ -42,10 +42,18 @@ L.Util.extend(L.KML, {
 			l = this.parseFolder(el[i], style);
 			if (l) { layers.push(l); }
 		}
+		//AGREGADO
+		el = xml.getElementsByTagName('name');
+		var nombre = ''
+		if (el.length && el[0].childNodes.length) {
+			nombre = el[0].childNodes[0].nodeValue;
+		}
+		//FIN AGREGADO
 		el = xml.getElementsByTagName('Placemark');
 		for (var j = 0; j < el.length; j++) {
 			if (!this._check_folder(el[j])) { continue; }
-			l = this.parsePlacemark(el[j], xml, style);
+			//AGREGA nombre
+			l = this.parsePlacemark(nombre,el[j], xml, style);
 			if (l) { layers.push(l); }
 		}
 		el = xml.getElementsByTagName('GroundOverlay');
@@ -177,10 +185,17 @@ L.Util.extend(L.KML, {
 			l = this.parseFolder(el[i], style);
 			if (l) { layers.push(l); }
 		}
+		//AGREGADO
+		el = xml.getElementsByTagName('name');
+		if (el.length && el[0].childNodes.length) {
+			var nombre = el[0].childNodes[0].nodeValue;
+		}
+		//FIN AGREGADO
 		el = xml.getElementsByTagName('Placemark');
 		for (var j = 0; j < el.length; j++) {
 			if (!this._check_folder(el[j], xml)) { continue; }
-			l = this.parsePlacemark(el[j], xml, style);
+			//AGREGA nombre
+			l = this.parsePlacemark(nombre,el[j], xml, style);
 			if (l) { layers.push(l); }
 		}
 		el = xml.getElementsByTagName('GroundOverlay');
@@ -202,7 +217,7 @@ L.Util.extend(L.KML, {
 		return l;
 	},
 
-	parsePlacemark: function (place, xml, style, options) {
+	parsePlacemark: function (nombreCarpeta,place, xml, style, options) {
 		var h, i, j, k, el, il, opts = options || {};
 
 		el = place.getElementsByTagName('styleUrl');
@@ -255,11 +270,11 @@ L.Util.extend(L.KML, {
 			layer = new L.FeatureGroup(layers);
 		}
 
-		this.addPlacePopup(place, layer);
+		this.addPlacePopup(place, layer, nombreCarpeta);
 		return layer;
 	},
 
-  addPlacePopup: function(place, layer) {
+	addPlacePopup: function(place, layer, nombreCarpeta) {
     var el, i, j, name, descr = '';
     el = place.getElementsByTagName('name');
     if (el.length && el[0].childNodes.length) {
@@ -273,7 +288,7 @@ L.Util.extend(L.KML, {
     }
 
     if (name) {
-      layer.bindPopup('<h2>' + name + '</h2>' + descr, { className: 'kml-popup'});
+      layer.bindPopup('<h2>' + nombreCarpeta + '</h2><h3>' + name + '</h3>' + descr, { className: 'kml-popup'});
     }
   },
 
