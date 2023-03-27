@@ -12,9 +12,9 @@ Objetivos:
 	 medio de un menú de selección
 
 Participantes:
-	·Facundo Cadaa
+	·Federico Cadaa
 	·Sebastian Baldini
-	·Francisco Serra
+	·Franco Serra
 	·Luciano Otero Nolte
 
 Necesario installar:
