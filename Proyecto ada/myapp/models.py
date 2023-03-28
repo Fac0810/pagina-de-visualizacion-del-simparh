@@ -47,7 +47,7 @@ class Medicion(models.Model):
     
 
     def __str__(self):
-        return 'Medicion de '+ self.estacion + ' en la fecha ' + self.fecha
+        return 'Medicion de '+ self.estacion + ' en la fecha ' + str(self.fecha)
     
 
 
@@ -72,7 +72,7 @@ class Contacto(models.Model):
     mensaje = models.TextField(null =True, blank=False)
 
     def __str__(self):
-        return self.nombre + " :" + self.asunto
+        return self.nombre + " :" + self.asunto.tipo
     
     def transformador(self):
         self.localidad= self.localidad.lower().title()
