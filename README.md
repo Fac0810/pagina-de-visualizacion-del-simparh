@@ -22,13 +22,31 @@ Participantes:
 
 Necesario installar:
 	Python
-	(en el venv via pip):
+	(En el venv via pip debería quedar así):
 		asgiref                  3.6.0
+		defusedxml               0.7.1
+		diff-match-patch         20200713
 		Django                   4.1.7
+		django-import-export     3.1.0
 		django-phonenumber-field 7.0.2
 		django-phonenumbers      1.0.1
+		et-xmlfile               1.1.0
+		MarkupPy                 1.14
+		odfpy                    1.4.1
+		openpyxl                 3.1.2
 		phonenumbers             8.13.7
 		pip                      23.0.1
+		PyYAML                   6.0
 		setuptools               65.5.0
 		sqlparse                 0.4.3
+		tablib                   3.4.0
+		xlrd                     2.0.1
+		xlwt                     1.3.0
+
+		
+	Para eso ejecutamos:
+		pip install Django
+		pip install django-phonenumbers
+		pip install django-phonenumber-field
+		pip install django-import-export
 
