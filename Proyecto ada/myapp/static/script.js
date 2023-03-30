@@ -41,7 +41,7 @@ success: (data) => {
         
         nombre = data.estaciones[i].nombre;
         marker = L.marker([data.estaciones[i].latitud, data.estaciones[i].longitud]).addTo(map);
-        marker.bindPopup('<p>NOMBRE: '+data.estaciones[i].nombre+'<br />FUENTE: '+data.estaciones[i].fuente+'<br />CODIGO: '+data.estaciones[i].estacion+'<br />MEDICIONES: <a href=http://127.0.0.1:8000/mediciones/'+data.estaciones[i].id+'>listado mediciones</a> </p>');
+        marker.bindPopup('<p>NOMBRE: '+data.estaciones[i].nombre+'<br />FUENTE: '+data.estaciones[i].fuente+'<br />CODIGO: '+data.estaciones[i].estacion+'<br />MEDICIONES: <a href=http://127.0.0.1:8000/mediciones/'+data.estaciones[i].id+'>listado mediciones</a> <br />GRAFICOS: <a href=http://127.0.0.1:8000/graficos/'+data.estaciones[i].id+'>Graficar mediciones</a></p>');
     };
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,

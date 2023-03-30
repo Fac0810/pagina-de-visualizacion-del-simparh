@@ -59,14 +59,14 @@ class MedicionesView(View):
     def delete(self, request):
         pass
 
-def graficos(request):
-    return render(request, 'graficos.html')
+def graficos(request, id):
+    return render(request, 'graficos.html',{"id":str(id)})
 
-def datos_graficos(request):
+def datos_graficos(request, id):
     labels = []
     data = []
 
-    queryset = Medicion.objects.values('fecha').annotate(temita=Sum('tmax')).order_by('fecha')
+    queryset = Medicion.objects.filter(estacion_id=id).values('fecha').annotate(temita=Sum('tmax')).order_by('fecha')
     for entry in queryset:
         labels.append(entry['fecha'])
         data.append(entry['temita'])
