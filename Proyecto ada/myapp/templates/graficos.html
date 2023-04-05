@@ -1,6 +1,7 @@
 
 <div id="container" style="width: 75%;">
     <canvas id="myChart" data-url="{% url 'myChart' id=id %}" > </canvas>
+    <canvas id="myChart2" data-url="{% url 'myChart2' id=id %}" > </canvas>
 </div>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -33,7 +34,7 @@
               },
               title: {
                 display: true,
-                text: 'Graficos ADA'
+                text: 'Temperaturas'
               }
             }
           });
@@ -42,5 +43,40 @@
       });
 
     });
+    $(function () {
+
+var $myChart2 = $("#myChart2");
+$.ajax({
+  url: $myChart2.data("url"),
+  success: function (data) {
+
+    var ctx = $myChart2[0].getContext("2d");
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: data.labels,
+        datasets: [{
+          label: 'Valor',
+          backgroundColor: 'blue',
+          data: data.data
+        }]          
+      },
+      options: {
+        responsive: true,
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'Precipitaciones'
+        }
+      }
+    });
+
+  }
+});
+
+});
 
   </script>

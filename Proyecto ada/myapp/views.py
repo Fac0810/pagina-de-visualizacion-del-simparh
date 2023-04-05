@@ -111,3 +111,16 @@ def mostrarMediciones(request, id):
 
 def mapakml(request):
     return render(request, 'mapakml.html')
+def datos_graficos1(request, id):
+    labels = []
+    data = []
+
+    queryset = Medicion.objects.filter(estacion_id=id).values('fecha').annotate(temita=Sum('pp_mm')).order_by('fecha')
+    for entry in queryset:
+        labels.append(entry['fecha'])
+        data.append(entry['temita'])
+
+    return JsonResponse(data={
+        'labels': labels,
+        'data': data,
+    })
