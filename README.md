@@ -49,4 +49,13 @@ Necesario installar:
 		pip install django-phonenumbers
 		pip install django-phonenumber-field
 		pip install django-import-export
+	JS
+	hay qur tener instalada la version 18.15.0 de node.js y el npm 9.5.0
+	(en debian:
+	apt update
+	apt upgrade
+	apt install curl
+	curl -sL https://deb.nodesource.com/setup_16.x | bash -
+	apt install nodejs
+	//se comprueba haciendo node-v y npm -v//
 
