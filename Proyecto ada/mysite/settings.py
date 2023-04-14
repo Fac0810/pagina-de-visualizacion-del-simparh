@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'myapp',
     'phonenumber_field',
     'import_export',
+    'rest_framework',
 ]
 
 

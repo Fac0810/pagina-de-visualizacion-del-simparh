@@ -21,8 +21,10 @@ Participantes:
 	·Iara Caruso
 
 Necesario installar:
-	Python
+	Python{
 	(En el venv via pip debería quedar así):
+		Package                  Version
+		------------------------ --------
 		asgiref                  3.6.0
 		defusedxml               0.7.1
 		diff-match-patch         20200713
@@ -30,12 +32,14 @@ Necesario installar:
 		django-import-export     3.1.0
 		django-phonenumber-field 7.0.2
 		django-phonenumbers      1.0.1
+		djangorestframework      3.14.0
 		et-xmlfile               1.1.0
 		MarkupPy                 1.14
 		odfpy                    1.4.1
 		openpyxl                 3.1.2
 		phonenumbers             8.13.7
 		pip                      23.0.1
+		pytz                     2023.3
 		PyYAML                   6.0
 		setuptools               65.5.0
 		sqlparse                 0.4.3
@@ -43,13 +47,14 @@ Necesario installar:
 		xlrd                     2.0.1
 		xlwt                     1.3.0
 
-		
 	Para eso ejecutamos:
 		pip install Django
 		pip install django-phonenumbers
 		pip install django-phonenumber-field
 		pip install django-import-export
-	JS
+		pip install djangorestframework
+	}
+	JS{
 	hay qur tener instalada la version 18.15.0 de node.js y el npm 9.5.0
 	(en debian:
 	apt update
@@ -58,4 +63,14 @@ Necesario installar:
 	curl -sL https://deb.nodesource.com/setup_16.x | bash -
 	apt install nodejs
 	//se comprueba haciendo node-v y npm -v//
-
+	
+	adamas debemos ejecutar
+		npm i vue-chartjs chart.js
+		(^para los graficos)
+		
+		npm i -D @vue-leaflet/vue-leaflet leaflet
+		(^para los mapas)
+		
+		vuetify
+	}
+	
