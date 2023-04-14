@@ -30,6 +30,12 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+CORS_ORIGIN_ALLOW_ALL =True
+
+CORS_ORIGINS_WHITELIST = (
+    '127.0.0.1:8000'
+)
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,6 +47,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'import_export',
     'rest_framework',
+    'corsheaders',
 ]
 
 
@@ -52,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'

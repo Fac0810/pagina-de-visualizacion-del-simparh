@@ -4,7 +4,7 @@
     <l-tile-layer :url="url" :attribution="attribution"/>
     <l-marker :lat-lng="withPopup">
       <l-popup>
-        <div @click="innerClick">
+        <div>
           I am a popup
         </div>
       </l-popup>
@@ -16,6 +16,8 @@
 <script>
 import { latLng } from "leaflet";
 import { LMap, LTileLayer, LMarker, LPopup} from "@vue-leaflet/vue-leaflet";
+
+import axios from 'axios';
 
 export default {
 name: "MapaEmas",
@@ -34,35 +36,23 @@ data() {
       '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>',
     withPopup: latLng(47.41322, -1.219482),
     currentCenter: latLng(47.41322, -1.219482),
+    estaciones: [],
   };
 },
 methods: {
-  innerClick() {
-    alert("Click!");
+  getEstaciones() {
+    
+    const path = 'http://127.0.0.1:8000/api/v1.0/estaciones/'
+    axios.get(path).then((response) => {
+      this.estaciones = response.data
+    })
+    .catch((error) => {
+      console.log(error)
+    })
   }
 },
 created(){
-  const url = 'http://127.0.0.1:8000/listaEstaciones/';
-  $.ajax({
-  url: url,
-  type: 'GET',
-  dataType: 'json',
-  success: (data) => {
-      for (i in data.estaciones){
-          //este for es para recorrer la api y sacar los datos necesarios
-          //console.log(data.estaciones[i].nombre);
-          
-          nombre = data.estaciones[i].nombre;
-          marker = L.marker([data.estaciones[i].latitud, data.estaciones[i].longitud]).addTo(map);
-          marker.bindPopup('<p>NOMBRE: '+data.estaciones[i].nombre+'<br />FUENTE: '+data.estaciones[i].fuente+'<br />CODIGO: '+data.estaciones[i].estacion+'<br />MEDICIONES: <a href=http://127.0.0.1:8000/mediciones/'+data.estaciones[i].id+'>listado mediciones</a> <br />GRAFICOS: <a href=http://127.0.0.1:8000/graficos/'+data.estaciones[i].id+'>Graficar mediciones</a></p>');
-    };
-  },
-
-error: () => {
-alert('Error vuelva a intentarlo mas tarde.');
-}
-
-});
+  this.getEstaciones()
 }
 };
 </script>
