@@ -2,10 +2,10 @@
 <div style="height: 800px; width: 100%">
   <l-map :zoom="zoom" :center="center">
     <l-tile-layer :url="url" :attribution="attribution"/>
-    <l-marker :lat-lng="withPopup">
+    <l-marker v-for="punto in estaciones" :lat-lng= "[punto.latitud, punto.longitud]">
       <l-popup>
         <div>
-          I am a popup
+          <p>NOMBRE: {{ punto.nombre }} <br />FUENTE: {{ punto.fuente }}<br />CODIGO: {{ punto.estacion }}<br />MEDICIONES: <a :href="'http://127.0.0.1:8000/mediciones/' + punto.id " >listado mediciones</a> <br />GRAFICOS: <a :href="'http://127.0.0.1:8000/graficos/' + punto.id ">Graficar mediciones</a> </p>
         </div>
       </l-popup>
     </l-marker>
@@ -49,6 +49,9 @@ methods: {
     .catch((error) => {
       console.log(error)
     })
+  },
+  pintarEstaciones(){
+    
   }
 },
 created(){
