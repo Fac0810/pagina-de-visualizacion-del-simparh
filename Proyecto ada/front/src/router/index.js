@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import MapaEmas from '../views/MapaEmas.vue'
 import Contacto from '../views/Contacto.vue'
+import GraficosEmas from '../views/GraficosEmas.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,6 +16,11 @@ const router = createRouter({
       path: '/mapa',
       name: 'mapa',
       component: MapaEmas
+    },
+    {
+      path: '/graficos',
+      name: 'graficos',
+      component: GraficosEmas
     },
     {
       path: '/contacto',

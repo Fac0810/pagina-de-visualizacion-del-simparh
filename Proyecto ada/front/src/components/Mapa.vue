@@ -50,9 +50,6 @@ methods: {
       console.log(error)
     })
   },
-  pintarEstaciones(){
-    
-  }
 },
 created(){
   this.getEstaciones()
