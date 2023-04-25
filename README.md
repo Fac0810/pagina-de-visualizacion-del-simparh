@@ -29,6 +29,7 @@ Necesario installar:
 		defusedxml               0.7.1
 		diff-match-patch         20200713
 		Django                   4.1.7
+		django-cors-headers      3.14.0
 		django-import-export     3.1.0
 		django-phonenumber-field 7.0.2
 		django-phonenumbers      1.0.1
@@ -53,6 +54,8 @@ Necesario installar:
 		pip install django-phonenumber-field
 		pip install django-import-export
 		pip install djangorestframework
+		pip install django-cors-headers
+
 	}
 	JS{
 	hay qur tener instalada la version 18.15.0 de node.js y el npm 9.5.0
@@ -68,9 +71,13 @@ Necesario installar:
 		npm i vue-chartjs chart.js
 		(^para los graficos)
 		
-		npm i -D @vue-leaflet/vue-leaflet leaflet
+		npm i @vue-leaflet/vue-leaflet leaflet
+		npm install axios
 		(^para los mapas)
 		
 		vuetify
+	}
+	{CCS
+	https://www.c-sharpcorner.com/article/how-to-add-tailwind-css-in-vue-js/
 	}
 	
