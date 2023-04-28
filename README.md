@@ -75,9 +75,16 @@ Necesario installar:
 		npm install axios
 		(^para los mapas)
 		
-		vuetify
+		npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+		npm install flowbite
+		npm i flowbite-vue
+		(^para el ccs en general)
 	}
 	{CCS
 	https://www.c-sharpcorner.com/article/how-to-add-tailwind-css-in-vue-js/
+	para tailwind
+	
+	https://flowbite.com/docs/getting-started/vue/
+	para flowbite
 	}
 	

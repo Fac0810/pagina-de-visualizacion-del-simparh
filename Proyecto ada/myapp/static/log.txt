@@ -1,0 +1,1 @@
+Warning 1: Layer name 'SIMPARH-_RECONQUISTA-Final' adjusted to 'SIMPARH__RECONQUISTA_Final' for XML validity.

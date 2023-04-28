@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="SIMPARH__RECONQUISTA_Final" id="SIMPARH__RECONQUISTA_Final">
+	<SimpleField name="EMA #" type="int"></SimpleField>
+	<SimpleField name="Latitud" type="float"></SimpleField>
+	<SimpleField name="Longitud" type="float"></SimpleField>
+	<SimpleField name="Partido" type="string"></SimpleField>
+	<SimpleField name="Pluviom." type="int"></SimpleField>
+	<SimpleField name="Freatim." type="int"></SimpleField>
+	<SimpleField name="Meteorol." type="int"></SimpleField>
+	<SimpleField name="Hidromét." type="int"></SimpleField>
+	<SimpleField name="Calidad" type="int"></SimpleField>
+	<SimpleField name="tipo instr" type="string"></SimpleField>
+	<SimpleField name="Ubicación" type="string"></SimpleField>
+	<SimpleField name="descriptio" type="string"></SimpleField>
+	<SimpleField name="altitudeMo" type="string"></SimpleField>
+	<SimpleField name="layer" type="string"></SimpleField>
+	<SimpleField name="path" type="string"></SimpleField>
+</Schema>
+<Folder><name>SIMPARH__RECONQUISTA_Final</name>
+  <Placemark>
+	<name>EMA 9</name>
+	<description>Pluviometro-Freatimetro-Meteorologica-Limnigrafica-Calidad
+Presa Rollero
+Moreno</description>
+      <Point><coordinates>-58.8591104719798,-34.6815377216379</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>EMA 8</name>
+	<description>Pluviometro- Liminigrafo- Calidad
+Puente Mitre
+Merlo</description>
+      <Point><coordinates>-58.7563181448332,-34.6587459727748</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>EMA_7</name>
+	<description>Freatimetro-Limnigrafo- Calidad
+Cañuela
+Acceso Oeste y Avda el Buen Ayre
+Cañuelas</description>
+	<ExtendedData><SchemaData schemaUrl="#SIMPARH__RECONQUISTA_Final">
+		<SimpleData name="EMA #">7</SimpleData>
+		<SimpleData name="Latitud">-34.6265055555556</SimpleData>
+		<SimpleData name="Longitud">-58.7233666666667</SimpleData>
+		<SimpleData name="Partido">Cañuelas</SimpleData>
+		<SimpleData name="Pluviom.">0</SimpleData>
+		<SimpleData name="Freatim.">0</SimpleData>
+		<SimpleData name="Meteorol.">0</SimpleData>
+		<SimpleData name="Hidromét.">1</SimpleData>
+		<SimpleData name="Calidad">1</SimpleData>
+		<SimpleData name="tipo instr">LFC</SimpleData>
+		<SimpleData name="Ubicación">Acceso Oeste y Avda el Buen Ayre</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-58.7233666666667,-34.6265055555556</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>EMA 5</name>
+	<description>Limnigrafo-Calidad
+Gral Rawson y Río Reconquista
+Campo de Mayo
+San Miguel</description>
+	<ExtendedData><SchemaData schemaUrl="#SIMPARH__RECONQUISTA_Final">
+		<SimpleData name="EMA #">5</SimpleData>
+		<SimpleData name="Latitud">-34.5640222222222</SimpleData>
+		<SimpleData name="Longitud">-58.6502944444444</SimpleData>
+		<SimpleData name="Partido">San Miguel</SimpleData>
+		<SimpleData name="Pluviom.">0</SimpleData>
+		<SimpleData name="Freatim.">0</SimpleData>
+		<SimpleData name="Meteorol.">0</SimpleData>
+		<SimpleData name="Hidromét.">1</SimpleData>
+		<SimpleData name="Calidad">1</SimpleData>
+		<SimpleData name="tipo instr">LC</SimpleData>
+		<SimpleData name="Ubicación">Gral Rawson y Río Reconquista</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-58.6502944444444,-34.5640222222222</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>EMA 4</name>
+	<description>Freatimetro-Limingrafo - Calidad
+Dentro predio de Ceamse- frente a Arcillex- y
+de la torre nro 5 perteneciente a Campo de Mayo
+General San Martin</description>
+      <Point><coordinates>-58.604813,-34.529273</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>EMA 3</name>
+	<description>Limnigrafo- Calidad
+(Solo se ajusta Lugar en el puente)
+San Fernando</description>
+      <Point><coordinates>-58.603596,-34.4804</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>CeMRe - EBnro 9</name>
+      <Point><coordinates>-58.6036991114818,-34.4818411893023</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>EMA 1 - ubicacion Pluv</name>
+	<description>Pluviometro
+(Se coloca el Pluviometro de la EMA 2)
+Paseo Verde Avenida Santiago de Liniers
+Tigre</description>
+      <Point><coordinates>-58.592665,-34.410156</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>EMA 1</name>
+	<description>Limnigrafo- Calidad
+Puente Levadizo Santiago de Liniers
+Tigre</description>
+      <Point><coordinates>-58.592911,-34.410192</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>EMA 2</name>
+	<description>Limnigrafo- Calidad
+(Se quita Meteorologica que se agrega en EMA 15
+ y Pluviometrica que se agrega en EMA 1)
+frenta a la estacion de Bombeo Nro 3 del Rio Reconquista 
+Tigre</description>
+      <Point><coordinates>-58.623716,-34.41788</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>EMA 6</name>
+	<description>Pluviometrica-Meteorologica-Featimetica
+Observatorio de Física Cósmica de San Miguel
+San Miguel</description>
+      <Point><coordinates>-58.729926,-34.555616</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>EMA 13</name>
+	<description>Pluviometrica- Meteorologica- freatrimetrica
+Barrio Privado Las Lilas
+Lujan</description>
+      <Point><coordinates>-59.1245805555556,-34.7221833333333</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>EMA_5 (PMFL)</name>
+	<description>Pluviometrica-Meteorologica-Limnigrafica-Calidad
+Presa Marin
+General Rodriguez
+</description>
+	<ExtendedData><SchemaData schemaUrl="#SIMPARH__RECONQUISTA_Final">
+		<SimpleData name="descriptio">NULL</SimpleData>
+		<SimpleData name="altitudeMo">NULL</SimpleData>
+		<SimpleData name="layer">EMA_5 (PMFL) EMA_5 (PMFL).kmz</SimpleData>
+		<SimpleData name="path">C:/Users/pablo/Desktop/SSRH-PBA/COMIREC/EMA_5 (PMFL).kmz|layername=EMA_5 (PMFL).kmz</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-58.9781979483469,-34.6653068784153</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>EMA_6 (PMFL)</name>
+	<description>Pluviometrica-Limnigrafica- Calidad
+Presa El Durazno
+Marcos Paz</description>
+	<ExtendedData><SchemaData schemaUrl="#SIMPARH__RECONQUISTA_Final">
+		<SimpleData name="descriptio">NULL</SimpleData>
+		<SimpleData name="altitudeMo">NULL</SimpleData>
+		<SimpleData name="layer">EMA_6 (PMFL) EMA_6 (PMFL).kmz</SimpleData>
+		<SimpleData name="path">C:/Users/pablo/Desktop/SSRH-PBA/COMIREC/EMA_6 (PMFL).kmz|layername=EMA_6 (PMFL).kmz</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-58.9562772725504,-34.7216459271981</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>EMA 14</name>
+	<description>Pluviometrica
+Limnigrafica
+freatrimetrica y
+General Las Heras</description>
+      <Point><coordinates>-59.0423458179359,-34.8537815379074</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>EMA_7 (PMFL)</name>
+	<description>Pluviometrica-Meteorologica-freatrimetrica
+coincide con pluviometro historico 
+estacion Plomer (1911-1992...)
+General Las Heras</description>
+	<ExtendedData><SchemaData schemaUrl="#SIMPARH__RECONQUISTA_Final">
+		<SimpleData name="descriptio">NULL</SimpleData>
+		<SimpleData name="altitudeMo">NULL</SimpleData>
+		<SimpleData name="layer">EMA_7 (PMFL) EMA_7 (PMFL).kmz</SimpleData>
+		<SimpleData name="path">C:/Users/pablo/Desktop/SSRH-PBA/COMIREC/EMA_7 (PMFL).kmz|layername=EMA_7 (PMFL).kmz</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-59.0294067955304,-34.7933480253569</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>EMA_11 (PMF)</name>
+	<description>Colegio
+Pluviometrica
+freatrimetrica
+se le agrega los sensores de meteorologia de la EMA 2
+General Las Heras</description>
+	<ExtendedData><SchemaData schemaUrl="#SIMPARH__RECONQUISTA_Final">
+		<SimpleData name="descriptio">NULL</SimpleData>
+		<SimpleData name="altitudeMo">NULL</SimpleData>
+		<SimpleData name="layer">EMA_11 (PMF) EMA_11 (PMF).kmz</SimpleData>
+		<SimpleData name="path">C:/Users/pablo/Desktop/SSRH-PBA/COMIREC/EMA_11 (PMF).kmz|layername=EMA_11 (PMF).kmz</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-59.133538,-34.823597</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>
