@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="es-AR">
+  <head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src chrome:; object-src 'none'" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Servidor no encontrado</title>
+    <link rel="stylesheet" href="chrome://browser/skin/aboutNetError.css" type="text/css" media="all" />
+    <link rel="icon" id="favicon" href="chrome://global/skin/icons/info.svg" />
+    <link rel="localization" href="browser/aboutCertError.ftl" />
+    <link rel="localization" href="browser/nsserrors.ftl" />
+    <link rel="localization" href="branding/brand.ftl" />
+  </head>
+
+  <body dir="ltr" class="neterror">
+    <!-- ERROR ITEM CONTAINER (removed during loading to avoid bug 39098) -->
+    
+
+    <!-- PAGE CONTAINER (for styling purposes only) -->
+    <div id="errorPageContainer" class="container">
+      <div id="text-container">
+        <!-- Error Title -->
+        <div class="title">
+          <h1 class="title-text" data-l10n-id="dnsNotFound-title">Hmm. Estamos teniendo problemas encontrando ese sitio.</h1>
+        </div>
+
+        <!-- LONG CONTENT (the section most likely to require scrolling) -->
+        <div id="errorLongContent">
+
+          <!-- Short Description -->
+          <div id="errorShortDesc">
+            <p id="errorShortDescText">No podemos conectarnos al servidor en {s}.tile.openstreetmap.org.</p>
+          </div>
+
+          <div id="errorShortDesc2">
+              <p id="errorShortDescText2"></p>
+          </div>
+
+          <div id="errorWhatToDoTitle">
+              <p id="errorWhatToDoTitleText"></p>
+          </div>
+
+          <div id="errorWhatToDo">
+              <p id="badStsCertExplanation" hidden="true"><span class="hostname"></span>
+ tiene una política de seguridad llamada HTTP Strict Transport Security 
+(HSTS), lo que significa que Firefox solo puede conectarse de forma 
+segura. No puede agregar una excepción para visitar este sitio.</p>
+              <p id="errorWhatToDoText"></p>
+          </div>
+
+          <div id="errorWhatToDo2">
+              <p id="errorWhatToDoText2"></p>
+              <p id="badStsCertExplanation" hidden="true"><span class="hostname"></span>
+ tiene una política de seguridad llamada HTTP Strict Transport Security 
+(HSTS), lo que significa que Firefox solo puede conectarse de forma 
+segura. No puede agregar una excepción para visitar este sitio.</p>
+          </div>
+
+          <!-- Long Description (Note: See netError.dtd for used XHTML tags) -->
+          <div id="errorLongDesc"><strong xmlns="http://www.w3.org/1999/xhtml">Si esa dirección es correcta, aquí hay otras tres cosas que puede probar:</strong>
+<ul xmlns="http://www.w3.org/1999/xhtml">
+ <li>Pruebe más tarde.</li>
+ <li>Verifique su conexión a Internet.</li>
+ <li>Si está conectado a través de un firewall, verifique que Firefox tiene permisos para acceder a la Web.</li>
+</ul></div>
+
+          <div id="tlsVersionNotice" hidden="true">
+            <p data-l10n-id="cert-error-old-tls-version">Es posible que este sitio web no admita el protocolo TLS 1.2, que es la versión mínima admitida por Firefox.</p>
+          </div>
+
+          <div id="learnMoreContainer">
+            <p><a id="learnMoreLink" target="_blank" rel="noopener noreferrer" data-telemetry-id="learn_more_link" href="https://support.mozilla.org/1/firefox/102.6.0/Linux/es-AR/connection-not-secure">Conocer más…</a></p>
+          </div>
+
+          <div id="openInNewWindowContainer" class="button-container">
+            <p><a id="openInNewWindowButton" target="_blank" rel="noopener noreferrer">
+            <button class="primary" data-l10n-id="open-in-new-window-for-csp-or-xfo-error">Abrir sitio en una ventana nueva</button></a></p>
+          </div>
+        </div>
+
+        <!-- UI for option to report certificate errors to Mozilla. Removed on
+             init for other error types .-->
+        <div id="prefChangeContainer" class="button-container">
+          <p>Parece que la configuración de seguridad de la red puede 
+estar causando esto. ¿Desea que se restaure la configuración 
+predeterminada?</p>
+          <button id="prefResetButton" class="primary">Restaurar configuración predeterminada</button>
+        </div>
+
+        <div id="certErrorAndCaptivePortalButtonContainer" class="button-container">
+          <button id="returnButton" class="primary" data-telemetry-id="return_button_top">Retroceder (recomendado)</button>
+          <button id="openPortalLoginPageButton" class="primary">Abrir página de ingreso a la red</button>
+          <button class="primary try-again">Intente nuevamente</button>
+          <button id="advancedButton" data-telemetry-id="advanced_button">Avanzadas…</button>
+        </div>
+      </div>
+
+      <div id="netErrorButtonContainer" class="button-container"><button class="primary try-again">Intente nuevamente</button>
+        
+      </div>
+
+      <div id="advancedPanelContainer">
+        <div id="badCertAdvancedPanel" class="advanced-panel" hidden="">
+          <p id="badCertTechnicalInfo"></p>
+          <a id="viewCertificate" href="javascript:void(0)">Ver certificado</a>
+          <div id="advancedPanelButtonContainer" class="button-container">
+            <button id="advancedPanelReturnButton" class="primary" data-telemetry-id="return_button_adv">Retroceder (recomendado)</button>
+            <button class="primary try-again">Intente nuevamente</button>
+            <div class="exceptionDialogButtonContainer">
+              <button id="exceptionDialogButton" data-telemetry-id="exception_button">Aceptar el riesgo y continuar</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="blockingErrorReporting" class="advanced-panel" hidden="">
+            <p class="toggle-container-with-text">
+                <input type="checkbox" id="automaticallyReportBlockingInFuture" role="checkbox" />
+                <label for="automaticallyReportBlockingInFuture">Informar errores como este para ayudar a Mozilla a identificarlo y bloquear sitios maliciosos</label>
+            </p>
+        </div>
+
+        <div id="certificateErrorDebugInformation" class="advanced-panel" hidden="">
+          <button id="copyToClipboardTop" data-telemetry-id="clipboard_button_top">Copiar texto al portapapeles</button>
+          <div id="certificateErrorText"></div>
+          <button id="copyToClipboardBottom" data-telemetry-id="clipboard_button_bot">Copiar texto al portapapeles</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="chrome://browser/content/certerror/aboutNetErrorCodes.js"></script>
+  <script type="module" src="chrome://browser/content/certerror/aboutNetError.js"></script>
+</html>

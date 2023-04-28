@@ -75,8 +75,8 @@ const pictures = [
 
 <template>
     <div>
-        <p class="font-extrabold text-6xl text-center text-blue-600">Bienvenidos</p>
+        <p class="font-extrabold text-6xl text-center text-cyan-500">Bienvenidos</p>
         <p class="text-4xl text-center">Al visualizador virtual del Simparh</p>
-        <Carousel :slide="true" :slide-interval="4000" :pictures="pictures" :controls="false" :indicators="false" class="m-2 -z-10"></Carousel>     
+        <Carousel :slide="true" :slide-interval="4000" :pictures="pictures" class="m-2 -z-10"></Carousel>     
     </div>
 </template>

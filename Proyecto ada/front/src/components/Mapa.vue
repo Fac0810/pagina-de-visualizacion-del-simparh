@@ -1,5 +1,5 @@
 <template>
-<div style="height: 800px; width: 100%">
+<div style="height: 600px; width: 100%" class="border-4 border-cyan-500 rounded">
   <l-map :zoom="zoom" :center="center">
     <l-tile-layer :url="url" :attribution="attribution"/>
     <l-marker v-for="punto in estaciones" :lat-lng= "[punto.latitud, punto.longitud]">
