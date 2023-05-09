@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
       <Bar v-if="loaded" :data="chartData" :options="chartOptions"/>
     </div>
   </template>

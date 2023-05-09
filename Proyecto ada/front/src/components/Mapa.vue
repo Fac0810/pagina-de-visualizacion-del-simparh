@@ -1,11 +1,11 @@
 <template>
-<div style="height: 600px; width: 100%" class="border-4 border-cyan-500 rounded">
+<div style="height: 600px; width: 100%" class="border-4 border-cyan-500">
   <l-map :zoom="zoom" :center="center">
     <l-tile-layer :url="url" :attribution="attribution"/>
     <l-marker v-for="punto in estaciones" :lat-lng= "[punto.latitud, punto.longitud]">
       <l-popup>
         <div>
-          <p>NOMBRE: {{ punto.nombre }} <br />FUENTE: {{ punto.fuente }}<br />CODIGO: {{ punto.estacion }}<br />MEDICIONES: <a :href="'http://127.0.0.1:8000/mediciones/' + punto.id " >listado mediciones</a> <br />GRAFICOS: <a :href="'http://127.0.0.1:8000/graficos/' + punto.id ">Graficar mediciones</a> </p>
+          <p>NOMBRE: {{ punto.nombre }} <br />FUENTE: {{ punto.fuente }}<br />CÓDIGO: {{ punto.estacion }}<br />MEDICIONES: <a :href="'http://127.0.0.1:8000/mediciones/' + punto.id " >listado mediciones</a> <br />GRÁFICOS: <a :href="'http://localhost:5173/graficos' /*+ punto.id */">Graficar mediciones</a> <p v-if="punto.mediciones.primera"> Primera medición: {{ punto.mediciones.primera }} <br/> Última medición: {{ punto.mediciones.ultima }}</p></p>
         </div>
       </l-popup>
     </l-marker>
@@ -49,10 +49,11 @@ methods: {
     .catch((error) => {
       console.log(error)
     })
+    console.log("ok Estaciones")
   },
 },
 created(){
-  this.getEstaciones()
+  this.getEstaciones();
 }
 };
 </script>
