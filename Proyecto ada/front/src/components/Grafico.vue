@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="position: relative; height:80vh;">
       <Bar v-if="loaded" :data="chartData" :options="chartOptions"/>
     </div>
   </template>
@@ -23,7 +23,23 @@
       data:[],
       label:[],
       chartOptions:{
-        responsive: true
+        responsive: true,
+        scales: {
+          x: {
+          title: {
+            color: 'dark grey',
+            display: true,
+            text: 'Fecha'
+            }
+          },
+          y: {
+          title: {
+            color: 'dark grey',
+            display: true,
+            text: 'Grados C°'
+            }
+          }
+        }
       }
     }),
     async mounted () {
