@@ -18,7 +18,7 @@ const pictures = [
     'alt': 'Foto 4',
   },
   {
-    'src': '../../public/carrusel_bienvenida/fue_idea_de_facu.jpeg',
+    'src': '../../public/carrusel_bienvenida/idea_del_otro_facu.jpg', 
     'alt': 'Foto 5',
   },]
 
