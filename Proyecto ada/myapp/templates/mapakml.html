@@ -13,7 +13,8 @@
 
             map.addLayer(osm);
 
-            // Load kml file
+            // Load kml file 
+            // /static/Estaciones.kml
             fetch('/static/SIMPARH-_RECONQUISTA-Final.kml')
                 .then(res => res.text())
                 .then(kmltext => {
