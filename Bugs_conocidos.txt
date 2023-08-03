@@ -1,2 +1,0 @@
-Bugs conocidos
-	El carrusel del inicio tapa al navBar. se podria uasar el navbar de vue para ver si hay algun cambio aparente

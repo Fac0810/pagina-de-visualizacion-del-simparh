@@ -1,28 +1,28 @@
 <template>
-    <form>
+    <form class="border-4 border-cyan-300"> 
         <div class="text-gray-40 focus:border-teal-400  ">
-            Asunto:
-            <input class="ml-2 px-4 py-2 border rounded" type="text" placeholder="Name">
+            <p>Asunto:</p>
+            <input class="ml-2 px-4 py-2 border rounded" v-model="asunto" placeholder="Un asunto">
         </div>
         <div class="text-gray-40 focus:border-teal-400  ">
-            Apellido:
-            <input class="ml-2 px-4 py-2 border rounded" type="text" placeholder="Name">
+            <p>Apellidos:</p>
+            <input class="ml-2 px-4 py-2 border rounded" v-model="apellidos" placeholder="Apellidos">
         </div>
         <div class="text-gray-40 focus:border-teal-400  ">
-            Nombre:
-            <input class="ml-2 px-4 py-2 border rounded" type="text" placeholder="Name">
+            <p>Nombres:</p>
+            <input class="ml-2 px-4 py-2 border rounded" v-model="nombres" placeholder="Nombres">
         </div>
         <div class="text-gray-40 focus:border-teal-400  ">
-            Email:
-            <input class="ml-2 px-4 py-2 border rounded" type="text" placeholder="Name">
+            <p>Email:</p>
+            <input class="ml-2 px-4 py-2 border rounded" v-model="email" placeholder="Email">
         </div>
         <div class="text-gray-40 focus:border-teal-400  ">
-            Teléfono:
-            <input class="ml-2 px-4 py-2 border rounded" type="text" placeholder="Name">
+            <p>Teléfono:</p>
+            <input class="ml-2 px-4 py-2 border rounded" v-model="telefono" placeholder="Teléfono">
         </div>
         <div class="text-gray-40 focus:border-teal-400  ">
-            Descripción:
-            <input class="ml-2 px-4 py-2 border rounded" type="text" placeholder="Name">
+            <p>Descripción:</p>
+            <textarea class="ml-2 px-4 py-2 border rounded" v-model="desc" placeholder="Descripción"></textarea>
         </div>
     </form>
 </template>

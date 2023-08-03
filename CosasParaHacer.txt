@@ -1,0 +1,16 @@
+Problemas:
+	·Contacto tiene un form roto
+	·Grafico muestrasolo un tipo de grafico y de una sola ema (la unica cargada)
+	imagen de contacto clipea sobre el form cuando la pantalla es muy chica
+Cosas por hacer:
+	·Debemos hostear la pagina en un servidor en la nube
+	·Debemos alimentarnos de Apis y transformarlas en informacion util
+	.Buscar una mejor utilidad para el traductor de KMLs a mapa leaflet
+	·Implementar medidas de seguridad
+Investigar:
+	·hostear webserver django
+Psosibilidades:
+	·Dokerizar la app
+	·investigar como usar influx y si usarla sola o con sql
+	·subir/bajar archivos a la pagina sin ser admin
+	·responsive

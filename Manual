@@ -1,0 +1,15 @@
+Manual
+
+La idea de la pagina es proveer un visualizador con la distinta infomracion sobre el 
+proyecto del Simpahr y otras fuentes similares.Debe permitir ver puntos, lineas, areas en un mapa, ver distinos tipos de graficos y cualquier otra informaion que se crea pertinente.
+
+Para correr el backend: ../Proyecto ada$ python manage.py runserver
+Para correr el frontend: ../Proyecto ada/front$ npm run dev
+
+myapp y mysite son las carpetas que contenien el funcionamiento del backend (my site por lo general no se toca
+front es la carpeta que contiene el funcionamiento de el frontend
+staticfiles contiene los mismos staticos que miapp/static pero deben estar en su propia carpeta, por fuera de my app para el correcto funcionamiento de la pagina web
+
+
+
+lo que se busca es que el backend funcione como un servidor administre la base de datos y que alimente por medio de APIs al front mientras que este ultimo se encarge de generar los mapas y grqaficos con la informacion administrada de manera comprehensible para un usuario común 
