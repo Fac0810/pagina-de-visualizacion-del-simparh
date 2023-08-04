@@ -13,10 +13,10 @@ onMounted(() =>{
 </script>
 
 <template>
-  <div class="h-screen">
+  <div class="h-screen bg-gray-100">
     <NavBar class="z-10"/> <!-- incluye al RouterLink para links del menu-->
 
-    <RouterView class="mx-[5vw]"/>
+    <RouterView class="mx-[5vw] bg-white"/>
 
     <Footer/>
   </div>
