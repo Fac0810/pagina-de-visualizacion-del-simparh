@@ -1,32 +1,36 @@
 <template>
-    <form class="border-4 border-cyan-300" @submit.prevent="onSubmit"> 
+    <form class="border-4 border-cyan-300" v-on:submit.prevent="onSubmit"> 
         <div class="text-gray-40 focus:border-teal-400  ">
             <p>Asunto:</p>
-            <select v-model="seleccionado" class="ml-2 px-4 py-2 border rounded border-gray-300">
+            <select v-model="form.asunto" class="ml-2 px-4 py-2 border rounded border-gray-300">
                 <option v-for="opcion in opciones" :value="opcion.id">
                     {{ opcion.tipo }}
                 </option>
             </select>
         </div>
         <div class="text-gray-40 focus:border-teal-400  ">
-            <p>Apellidos:</p>
-            <input class="ml-2 px-4 py-2 border rounded border-gray-300" v-model="apellidos" placeholder="Apellidos">
+            <p>Localidad:</p>
+            <input class="ml-2 px-4 py-2 border rounded border-gray-300" v-model="form.localidad" placeholder="localidad">
+        </div>
+        <div class="text-gray-40 focus:border-teal-400  ">
+            <p>Partido:</p>
+            <input class="ml-2 px-4 py-2 border rounded border-gray-300" v-model="form.partido" placeholder="Partido">
         </div>
         <div class="text-gray-40 focus:border-teal-400  ">
             <p>Nombres:</p>
-            <input class="ml-2 px-4 py-2 border rounded border-gray-300" v-model="nombres" placeholder="Nombres">
+            <input class="ml-2 px-4 py-2 border rounded border-gray-300" v-model="form.nombres" placeholder="Nombres">
         </div>
         <div class="text-gray-40 focus:border-teal-400  ">
             <p>Email:</p>
-            <input class="ml-2 px-4 py-2 border rounded border-gray-300" v-model="email" placeholder="Email">
+            <input class="ml-2 px-4 py-2 border rounded border-gray-300" v-model="form.email" placeholder="Email">
         </div>
         <div class="text-gray-40 focus:border-teal-400  ">
             <p>Teléfono:</p>
-            <input class="ml-2 px-4 py-2 border rounded border-gray-300" v-model="telefono" placeholder="Teléfono">
+            <input class="ml-2 px-4 py-2 border rounded border-gray-300" v-model="form.telefono" placeholder="Teléfono">
         </div>
         <div class="text-gray-40 focus:border-teal-400  ">
-            <p>Descripción:</p>
-            <textarea class="ml-2 px-4 py-2 border rounded border-gray-300" v-model="desc" placeholder="Descripción"></textarea>
+            <p>Mensaje:</p>
+            <textarea class="ml-2 px-4 py-2 border rounded border-gray-300" v-model="form.mensaje" placeholder="¿Por qué desea comunicarse?"></textarea>
         </div>
         <div class="text-gray-40">
             <button type="submit" class="ml-2 px-4 py-2 border rounded bg-green-500 hover:border-black">Enviar</button>
@@ -36,34 +40,35 @@
 
 <script>
 import axios from 'axios';
-import { ref } from 'vue'
 
 export default {
 
 data(){
   return {
-        seleccionado: ref(1),
-        opciones: ref([{id:1, tipo:"Asunto"}])
+      form:{
+        localidad:'',
+        partido:'',
+        nombres:'',
+        email:'',
+        telefono:'',
+        mensaje:'',
+        asunto: 1,
+      },
+      opciones: [{id:1, tipo:"Asunto"}]
     }
 },
-
-setup() {
-const onSubmit = () => {
-      enviarForm();
-    };
-const enviarForm= () => {
-    
-    const path = 'http://127.0.0.1:8000/api/v1.0/estaciones/'
-    axios.get(path).then((response) => {
-      console.log(response.data)
-    })
-    .catch((error) => {
-      console.log(error)
+methods:{
+  onSubmit(){
+    const path = 'http://127.0.0.1:8000/api/v1.0/contactos/'
+    axios.post(path,this.form).then((response) => {
+      this.success = 'Data saved successfully';
+      console.log("Data Guardada")
+      this.response = JSON.stringify(response, null, 2)
+      }).catch(error => {
+        this.response = 'Error: ' + error.response.status
     });
-    console.log("Formulario Enviado");
-  };
-
-return{ onSubmit, enviarForm }
+    console.log("Formulario");
+  }
 },
 
 mounted(){

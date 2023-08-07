@@ -1,6 +1,6 @@
 #aca se serializan los models para hacerlos API
 from rest_framework import serializers
-from .models import Estacion, Medicion, Asunto
+from .models import Estacion, Medicion, Asunto, Contacto
 
 class EstacionSerializer(serializers.ModelSerializer):
 
@@ -27,4 +27,9 @@ class MedicionSerializer(serializers.ModelSerializer):
 class AsuntoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Asunto
+        fields = '__all__'
+
+class ContactoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contacto
         fields = '__all__'
