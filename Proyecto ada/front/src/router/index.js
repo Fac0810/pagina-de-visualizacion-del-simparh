@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import MapaEmas from '../views/MapaEmas.vue'
 import Contacto from '../views/Contacto.vue'
 import GraficosEmas from '../views/GraficosEmas.vue'
+import Exito from '../views/Exito.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/contacto',
       name: 'contacto',
       component: Contacto
+    },
+    {
+      path: '/exito',
+      name: 'exito',
+      component: Exito
     }
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
