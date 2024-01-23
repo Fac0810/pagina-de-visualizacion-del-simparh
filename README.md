@@ -14,11 +14,6 @@ Objetivos:
 Participantes:
 
 	·Facundo Cadaa
-	·Sebastian Baldini
-	·Franco Serra
-	·Luciano Otero Nolte
-	·Facundo Medina
-	·Iara Caruso
 
 Necesario installar:
 	Python{
@@ -68,6 +63,8 @@ Necesario installar:
 	//se comprueba haciendo node-v y npm -v//
 	
 	adamas debemos ejecutar
+		npm install vite
+
 		npm i vue-chartjs chart.js
 		(^para los graficos)
 		
