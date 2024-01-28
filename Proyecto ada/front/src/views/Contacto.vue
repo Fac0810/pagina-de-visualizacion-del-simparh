@@ -4,7 +4,6 @@ import FormularioContacto from '../components/FormularioContacto.vue'
 
 <template>
   <main>
-    mete la info aca
     <FormularioContacto />
   </main>
 </template>

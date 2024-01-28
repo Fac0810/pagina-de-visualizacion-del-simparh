@@ -80,6 +80,8 @@ Necesario installar:
 	//se comprueba haciendo node-v y npm -v//
 	
 	adamas debemos ejecutar
+		npm install vite
+
 		npm i vue-chartjs chart.js
 		(^para los graficos)
 		
