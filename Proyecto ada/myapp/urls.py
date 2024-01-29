@@ -6,6 +6,7 @@ urlpatterns = [
     path('listaEstaciones/', views.EstacionesView.as_view(),name='lista de estaciones'),
     path('listaMediciones/', views.MedicionesView.as_view(),name='lista de mediciones'),
     path('contacto/', views.contacto),
+    path('login/', views.login),
     path('datos_graficos/<int:id>', views.datos_graficos , name='myChart'),
     path('datos_graficos1/<int:id>', views.datos_graficos1 , name='myChart2'),
     path('graficos/<int:id>',views.graficos),

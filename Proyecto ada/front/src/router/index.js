@@ -13,6 +13,12 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/login',
+      name: 'login',
+      meta: { excludeNavBarFooter: true },
+      component: () => import('../views/Login.vue'),
+    },
+    {
       path: '/mapa',
       name: 'mapa',
       component: MapaEmas

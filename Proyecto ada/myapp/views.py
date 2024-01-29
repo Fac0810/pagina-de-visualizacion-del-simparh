@@ -14,6 +14,19 @@ from django.db.models import Sum
 def index(request):
     return render(request, 'index.html')
 
+
+from .forms import LoginForm  # Ajusta esto según tu estructura de archivos
+
+def login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            return render(request, 'index.html')
+    else:
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})
+
+
 #Se utiliza para el fromulario de contacto
 def contacto(request):
     if request.method== "POST":
