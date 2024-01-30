@@ -5,12 +5,12 @@ import { RouterLink} from 'vue-router'
 </script>
 
 <template>
-    <header>
+    <body>
         <nav class="bg-white dark:bg-gray-900 w-full top-0 left-0 border-b border-gray-200 dark:border-gray-600">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <RouterLink to="/" class="flex items-center">
                     <img src="../../public/logo_ada.svg" class="h-8 mr-3" alt="Logo ADA">
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Simparh</span>
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">SIMPARH</span>
                 </RouterLink>
                 <div class="flex md:order-2">
                     <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
@@ -27,14 +27,28 @@ import { RouterLink} from 'vue-router'
                             <RouterLink to="/mapa" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Mapas</RouterLink>
                         </li>
                         <li>
-                            <RouterLink to="/contacto" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contacto</RouterLink>
+                            <RouterLink to="/graficos" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Graficos</RouterLink>
                         </li>
                         <li>
-                            <RouterLink to="/graficos" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Graficos</RouterLink>
+                            <RouterLink to="/contacto" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contacto</RouterLink>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-    </header>
+    </body>
 </template>
+
+<style>
+    .navbar-sticky {
+        transition: all 0.5s ease-in-out;
+    }
+    .navbar-sticky--unsticky {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    .navbar-sticky--sticky {
+        transform: translateY(0);
+        opacity: 1;
+    }
+</style>

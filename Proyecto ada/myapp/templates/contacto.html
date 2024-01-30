@@ -1,27 +1,18 @@
-
-{% load static %}
-<html>
-  <head>
-    <div class="contenedor">
-      <link rel="stylesheet" href="{% static 'stylecontacto.css' %}">
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="crossorigin=""/><meta charset="utf-8">
-      <div class="centrado"><h1>Contacto</h1></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    <title>Iniciar Sesión</title>
+</head>
+<body>
+    <div id="app">
+      <Contacto />
     </div>
-    <img src="{% static 'teclado1.jpg' %}">
-  </head>
 
-  <body>
-    <form action="" method="POST">{% csrf_token %}
-      <table>
-        {{form.as_table}}
-      </table>
-      <button type="submit" >Enviar</button>
-    </form>
-  </body>
+    <!-- <script src="{% static 'path/to/your/vue/app/main.js' %}"></script> -->
+</body>
 </html>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="crossorigin=""></script>
-<script src="{% static 'scriptcontactos.js' %}"></script>
 

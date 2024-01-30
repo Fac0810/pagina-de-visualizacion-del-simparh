@@ -1,6 +1,11 @@
 <template>
   <div class="center-container">
   <body>
+    <div class="container">
+      <div class="brand">
+        <img src="../../public/logoSIMPARH.png" alt="Logo SIMPARH">
+      </div>
+    </div>
     <section>
       <form @submit.prevent="login">
         <h1>Ingreso</h1>
@@ -20,6 +25,7 @@
         <div class="register">
           <p>¿No tenes cuenta? <a href="#">Click acá</a></p>
         </div>
+        <button onclick="window.location.href='/'">Ingresar como invitado</button>
       </form>
     </section>
   </body>
@@ -39,7 +45,7 @@ export default {
   },
   methods: {
     login() {
-      // Agrega aquí la lógica de inicio de sesión con Django si es necesario
+     
     },
   },
 };
@@ -47,9 +53,27 @@ export default {
 
 
 <style>
-/* author: Ecem Gokdogan
-https://codepen.io/ecemgo/pen/Baqpbez */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+.container {
+  width: 10%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.brand {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 50px;
+  display: flex;
+  align-items: center;
+}
+.container .brand img {
+  width: 25%;
+  height: 25 %;
+}
 
 * {
   margin: 0;
@@ -75,6 +99,7 @@ body {
   }
 
 section {
+  margin-top: 55px;
   position: relative;
   max-width: 400px;
   background-color: transparent;
@@ -92,15 +117,25 @@ h1 {
   color: #fff;
   text-align: center;
 }
+
 .inputbox input:focus {
-  outline: none; 
+    outline: none;
 }
+
+.inputbox input:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.1); 
+}
+
+
 
 .inputbox {
   position: relative;
   margin: 30px 0;
   max-width: 310px;
   border-bottom: 2px solid #fff;
+  outline: none; 
+
 }
 
 .inputbox label {
@@ -130,16 +165,8 @@ input:valid~label {
   color: #fff;
 }
 
-.inputbox ion-icon {
-  position: absolute;
-  right: 8px;
-  color: #fff;
-  font-size: 1.2rem;
-  top: 20px;
-}
-
 .forget {
-  margin: 35px 0;
+  margin: 10px 0;
   font-size: 0.85rem;
   color: #fff;
   display: flex;
@@ -188,7 +215,7 @@ button:hover {
   font-size: 0.9rem;
   color: #fff;
   text-align: center;
-  margin: 25px 0 10px;
+  margin: 10px 0 10px;
 }
 
 .register p a {

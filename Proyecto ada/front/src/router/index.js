@@ -10,27 +10,31 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
+      meta: { title: 'SIMPARH' },
       component: HomeView
     },
     {
       path: '/login',
       name: 'login',
-      meta: { excludeNavBarFooter: true },
+      meta: { excludeNavBarFooter: true, title: 'SIMPARH' },
       component: () => import('../views/Login.vue'),
     },
     {
       path: '/mapa',
       name: 'mapa',
+      meta: { title: 'Mapa' },
       component: MapaEmas
     },
     {
       path: '/graficos',
       name: 'graficos',
+      meta: { title: 'Graficos' },
       component: GraficosEmas
     },
     {
       path: '/contacto',
       name: 'contacto',
+      meta: { title: 'Contacto' },
       component: Contacto
     }
       // route level code-splitting
