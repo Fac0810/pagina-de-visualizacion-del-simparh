@@ -1,10 +1,8 @@
 <template>
   <div class="center-container">
   <body>
-    <div class="container">
-      <div class="brand">
-        <img src="../../public/logoSIMPARH.png" alt="Logo SIMPARH">
-      </div>
+    <div class="logo">
+    <img src="../../public/logoSIMPARH.png" alt="Logo SIMPARH">
     </div>
     <section>
       <form @submit.prevent="login">
@@ -19,11 +17,11 @@
         </div>
         <div class="forget">
           <label for=""><input type="checkbox">Recordarme</label>
-          <a href="#">Olvide la contraseña</a>
+          <a href="/">Olvide la contraseña</a>
         </div>
-        <button>Iniciar Sesión</button>
+        <button onclick="window.location.href='/'" >Iniciar Sesión</button>
         <div class="register">
-          <p>¿No tenes cuenta? <a href="#">Click acá</a></p>
+          <p>¿No tenes cuenta? <a href="/">Click acá</a></p>
         </div>
         <button onclick="window.location.href='/'">Ingresar como invitado</button>
       </form>
@@ -32,10 +30,7 @@
 </div>
 </template>
 
-
-
 <script>
-
 export default {
   data() {
     return {
@@ -50,30 +45,8 @@ export default {
   },
 };
 </script>
-
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-
-.container {
-  width: 10%;
-  height: 10%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.brand {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 50px;
-  display: flex;
-  align-items: center;
-}
-.container .brand img {
-  width: 25%;
-  height: 25 %;
-}
 
 * {
   margin: 0;
@@ -82,11 +55,21 @@ export default {
   font-family: 'poppins', sans-serif;
 }
 
+.logo {
+  position: absolute;
+  top: 0;
+  left: auto;
+  width: 300px;
+}
 body {
-    margin: 0; /* Elimina el margen predeterminado del body */
-    overflow: hidden; /* Evita el desplazamiento vertical */
+    margin: 0; 
+    overflow: hidden; 
   }
 
+  img {
+    margin-left: 28px;
+
+  }
   .center-container {
     display: flex;
     align-items: center;
@@ -126,8 +109,6 @@ h1 {
     outline: none;
     box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.1); 
 }
-
-
 
 .inputbox {
   position: relative;

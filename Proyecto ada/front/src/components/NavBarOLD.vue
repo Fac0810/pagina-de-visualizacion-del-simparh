@@ -7,17 +7,29 @@ import { RouterLink } from 'vue-router'
 <template>
     <body>
         <div class="ingrateBody">
-            <nav class="navStyle border-b border-gray-200 dark:border-gray-600">
-                <div class="flex justify-between mx-auto p-2">
-                    <div class="logo flex items-center">
+            <nav class="bg-white dark:bg-gray-900 w-full top-0 left-0 border-b border-gray-200 dark:border-gray-600">
+                <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                    <div class="logo">
                         <RouterLink to="/" class="flex items-center">
-                            <img src="../../public/logo_ada.svg" class="h-14 mr-3" alt="Logo ADA">
+                            <img src="../../public/logo_ada.svg" class="h-8 mr-3" alt="Logo ADA">
                             <span
                                 class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">SIMPARH</span>
                         </RouterLink>
                     </div>
-                    
-                    <div class="flex items-center justify-center hidden w-full md:flex md:w-auto " id="navbar-sticky">
+                    <div class="flex md:order-2">
+                        <button data-collapse-toggle="navbar-sticky" type="button"
+                            class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                            aria-controls="navbar-sticky" aria-expanded="false">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                         <ul
                             class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                             <li>
@@ -42,17 +54,6 @@ import { RouterLink } from 'vue-router'
                             </li>
                         </ul>
                     </div>
-                    <div class="perfil flex items-center justify-end">
-                        <RouterLink to="/">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="25" fill="#92bde7">
-                                <path
-                                    d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                            </svg>
-                        </RouterLink>
-                        <div>
-                            Nombre Apellido
-                        </div>
-                    </div>
                 </div>
             </nav>
         </div>
@@ -60,33 +61,21 @@ import { RouterLink } from 'vue-router'
 </template>
 
 <style>
-.logo {
-    
-}
-.navStyle {
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 999;
+.integrateBody {
+    background: #92bde7;
 }
 
-.perfil {
-    padding: 15px;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-    border-left: 2px solid #92bde7;
-    padding-right: 5px;
+.navbar-sticky {
+    transition: all 0.5s ease-in-out;
 }
 
-.perfil .svg
-{
-    border-radius: 50%;
-    border: 2px solid #92bde7;
-    margin: 2px;
+.navbar-sticky--unsticky {
+    transform: translateY(-100%);
+    opacity: 0;
 }
 
-.perfil:hover {
-    transform: scale(1.1);
+.navbar-sticky--sticky {
+    transform: translateY(0);
+    opacity: 1;
 }
 </style>
