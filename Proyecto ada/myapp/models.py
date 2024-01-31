@@ -244,7 +244,7 @@ class Usuario(models.Model):
     apellido = models.CharField(max_length=60, null=False, blank=False)
     email = models.EmailField(null=False, blank=False)
     fecha_inicio = models.DateField(default=datetime.now)
-    ultima_coneccion = models.DateTimeField(default=datetime.now)
+    ultima_conexion = models.DateTimeField(default=datetime.now)
 
 class Rol(models.Model):
     id = models.BigAutoField(primary_key=True)
