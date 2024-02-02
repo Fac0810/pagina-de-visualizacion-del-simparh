@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from .models import Estacion, Medicion, Contacto
+from .models import Estacion, Contacto
 from django.views import View
 from .forms import FormularioContacto
 from django.db.models import Sum
@@ -57,6 +57,7 @@ class EstacionesView(View):
     def delete(self, request):
         pass
 # Hago el json de las mediciones 
+    """
 class MedicionesView(View):
     def get(self, request):
         mediciones = list(Medicion.objects.values())
@@ -71,10 +72,10 @@ class MedicionesView(View):
         pass
     def delete(self, request):
         pass
-
+"""
 def graficos(request, id):
     return render(request, 'graficos.html',{"id":str(id)})
-
+"""
 def datos_graficos(request, id):
     labels = []
     data = []
@@ -88,6 +89,7 @@ def datos_graficos(request, id):
         'labels': labels,
         'data': data,
     })
+"""
 """
 def datos_graficos(request):
     labels = []
@@ -118,12 +120,15 @@ def datos_graficos(request):
 
 
 #esto se utiliza para mostrar las mediciones de una estacion en particular (si tiene)
+"""
 def mostrarMediciones(request, id):
     mediciones=Medicion.objects.filter(estacion_id=id).order_by('fecha')
     return render(request, 'mediciones.html',{"mediciones":mediciones}) 
-
+"""
 def mapakml(request):
     return render(request, 'mapakml.html')
+
+"""
 def datos_graficos1(request, id):
     labels = []
     data = []
@@ -137,3 +142,5 @@ def datos_graficos1(request, id):
         'labels': labels,
         'data': data,
     })
+
+"""
