@@ -64,9 +64,18 @@ Necesario installar:
 		pip install Django django-phonenumbers django-phonenumber-field django-import-export djangorestframework django-cors-headers
 
 	Para correr el local server:
-		
+
+		python -m venv venv (como administrador)
+
 		python manage.py runserver
 		python manage.py migrate
+
+	Para correr vite-vue run:  
+	
+		cd front
+		npm install   
+		npm run dev 
+
 
 	}
 	JS{
