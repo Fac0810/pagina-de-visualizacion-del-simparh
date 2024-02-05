@@ -1,5 +1,7 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+from .views import check_mantenimiento_post
+
 
 urlpatterns = [
     path('', views.index),
@@ -13,4 +15,7 @@ urlpatterns = [
     path('exito/', views.contacto),
     #path('mediciones/<int:id>', views.mostrarMediciones),
     path('mapakml/', views.mapakml),
+
+    # API
+    path('api/', include('myapp.urlsApi')),
 ]

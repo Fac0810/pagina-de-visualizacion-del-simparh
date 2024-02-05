@@ -1,11 +1,16 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from .models import Estacion, Contacto
+from .models import Estacion, Contacto, EstadoMantenimiento
 from django.views import View
 from .forms import FormularioContacto
 from django.db.models import Sum
 
+#Para API
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
 
+from datetime import datetime, timedelta
 
 
 
@@ -128,19 +133,62 @@ def mostrarMediciones(request, id):
 def mapakml(request):
     return render(request, 'mapakml.html')
 
-"""
-def datos_graficos1(request, id):
-    labels = []
-    data = []
 
-    queryset = Medicion.objects.filter(estacion_id=id).values('fecha').annotate(temita=Sum('pp_mm')).order_by('fecha')
-    for entry in queryset:
-        labels.append(entry['fecha'])
-        data.append(entry['temita'])
+# def datos_graficos1(request, id):
+#     labels = []
+#     data = []
 
-    return JsonResponse(data={
-        'labels': labels,
-        'data': data,
-    })
+#     queryset = Medicion.objects.filter(estacion_id=id).values('fecha').annotate(temita=Sum('pp_mm')).order_by('fecha')
+#     for entry in queryset:
+#         labels.append(entry['fecha'])
+#         data.append(entry['temita'])
 
-"""
+#     return JsonResponse(data={
+#         'labels': labels,
+#         'data': data,
+#     })
+
+
+@api_view(['POST'])
+def check_mantenimiento_post(request):
+    id_estacion = request.data.get('idEstacion', None)
+
+    if id_estacion is not None:
+        try:
+            estacion = Estacion.objects.get(id=id_estacion)
+            mantenimiento = estacion.estado_mantenimiento
+            
+            response_data = {
+                'nombre': estacion.nombre,
+                'ultimo_mantenimiento': estacion.ultimo_mantenimiento,
+                'estado_mantenimiento_id': mantenimiento.id,
+                'estado_mantenimiento': mantenimiento.nombre,  
+            }
+
+            return Response(response_data)
+        except Estacion.DoesNotExist:
+            return Response({'error': 'Estación no encontrada'}, status=status.HTTP_404_NOT_FOUND)
+        except EstadoMantenimiento.DoesNotExist:
+            return Response({'error': 'Mantenimiento no encontrado'}, status=status.HTTP_404_NOT_FOUND)
+    else:
+        return Response({'error': 'Se requiere el parámetro idEstacion'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def estaciones_mantenimiento_reciente(request):
+    
+    fecha_actual = datetime.now()
+    fecha_hace_tres_meses = fecha_actual - timedelta(days=90)
+    # estaciones_recientes = Estacion.objects.filter(ultimo_mantenimiento__gte=fecha_hace_tres_meses) # mayor igual
+    estaciones_recientes = Estacion.objects.filter(ultimo_mantenimiento__lte=fecha_hace_tres_meses) # menor igual
+
+    resultados = [
+        {
+            'nombre': estacion.nombre,
+            'ultimo_mantenimiento': estacion.ultimo_mantenimiento,
+            'estado_mantenimiento': estacion.estado_mantenimiento.nombre,
+        }
+        for estacion in estaciones_recientes
+    ]
+
+    return Response(resultados)
