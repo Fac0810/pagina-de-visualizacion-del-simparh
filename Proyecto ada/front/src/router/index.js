@@ -20,6 +20,12 @@ const router = createRouter({
       component: () => import('../views/Login.vue'),
     },
     {
+      path: '/signup',
+      name: 'signup',
+      meta: { excludeNavBarFooter: true, title: 'SIMPARH' },
+      component: () => import('../views/Signup.vue'),
+    },
+    {
       path: '/mapa',
       name: 'mapa',
       meta: { title: 'Mapa' },
