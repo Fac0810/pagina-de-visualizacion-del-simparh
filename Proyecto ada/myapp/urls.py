@@ -2,6 +2,8 @@ from django.urls import path, include
 from . import views
 from .views import check_mantenimiento_post
 
+DEVELOPMENT_URL = 'http://127.0.0.1:8000/'
+PRODUCTION_URL = 'https://url-de-produccion.com/'
 
 urlpatterns = [
     path('', views.index),

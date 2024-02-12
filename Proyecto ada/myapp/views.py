@@ -1,26 +1,28 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from .models import Estacion, Contacto, EstadoMantenimiento
 from django.views import View
-from .forms import FormularioContacto
 from django.db.models import Sum
 
-#Para API
+from datetime import datetime, timedelta
+
+### MODELS ###
+from .models import Estacion, Contacto, EstadoMantenimiento
+
+### FORMS ###
+from .forms import LoginForm  # Ajusta esto según tu estructura de archivos
+from .forms import FormularioContacto
+
+#API
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-from datetime import datetime, timedelta
-
-
-
-# Create your views here.
+### HOME ###
 
 def index(request):
     return render(request, 'index.html')
 
-
-from .forms import LoginForm  # Ajusta esto según tu estructura de archivos
+### LOGIN ###
 
 def login(request):
     if request.method == 'POST':
@@ -31,8 +33,13 @@ def login(request):
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
+### SIGNUP ###
 
-#Se utiliza para el fromulario de contacto
+# def signup(request):
+#     return render(request, 'signup.html')
+
+
+### CONTACTO ###
 def contacto(request):
     if request.method== "POST":
         formulario=FormularioContacto(request.POST)
@@ -46,6 +53,8 @@ def contacto(request):
         formulario=FormularioContacto()
     return render(request,'contacto.html',{"form":formulario})
 
+
+### EMA'S ###
 # Hago el json de las estaciones 
 class EstacionesView(View):
     def get(self, request):
@@ -78,6 +87,9 @@ class MedicionesView(View):
     def delete(self, request):
         pass
 """
+
+
+### GRAFICOS ###
 def graficos(request, id):
     return render(request, 'graficos.html',{"id":str(id)})
 """
@@ -148,6 +160,12 @@ def mapakml(request):
 #         'data': data,
 #     })
 
+
+### MANTENIMIENTO ###
+
+
+
+### API ###
 
 @api_view(['POST'])
 def check_mantenimiento_post(request):

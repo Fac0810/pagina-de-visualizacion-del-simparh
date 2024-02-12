@@ -1,10 +1,12 @@
 <script setup>
 import { RouterView } from 'vue-router'
-import NavBar from './components/NavBar.vue'
-import Footer from './components/Footer.vue'
 
 import { onMounted } from 'vue'
 import { initFlowbite } from 'flowbite'
+
+import NavBar from './components/NavBar.vue'
+import Footer from './components/Footer.vue'
+
 
 onMounted(() => {
   initFlowbite();

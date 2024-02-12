@@ -21,9 +21,9 @@
         </div>
         <button onclick="window.location.href='/'" >Iniciar Sesión</button>
         <div class="register">
-          <p>¿No tenes cuenta? <a href="/">Click acá</a></p>
+          <p>¿No tenes cuenta? <a href="/signup">Click acá</a></p>
         </div>
-        <button onclick="window.location.href='/'">Ingresar como invitado</button>
+        <button onclick="window.location.href='/'" >Ingresar como invitado</button>
       </form>
     </section>
   </body>
@@ -39,8 +39,8 @@ export default {
     };
   },
   methods: {
-    login() {
-     
+    ingresoInvitado() {
+      this.$router.push('/');
     },
   },
 };
