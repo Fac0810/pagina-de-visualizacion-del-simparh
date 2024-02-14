@@ -9,8 +9,6 @@ import "vue-toastification/dist/index.css";
 
   router.beforeEach((to, from, next) => {
     document.title = to.meta.title || 'SIMPARH';
-    const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
-    to.meta.csrfToken = csrfToken;
     next();
   });
 

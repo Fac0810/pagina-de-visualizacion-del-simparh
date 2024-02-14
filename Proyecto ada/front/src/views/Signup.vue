@@ -62,9 +62,9 @@ import { useToast } from 'vue-toastification';
 import axios from 'axios';
 
 export default {
-  props: {
-    csrf_token: String
-  },
+  // props: {
+  //   csrf_token: String
+  // },
   data() {
     return {
       nombreUsuario: '',
@@ -185,7 +185,7 @@ export default {
       return true;
     },
     submit(event) {
-      event.preventDefault();
+      event.preventDefault(); 
 
       if (this.validate()) {
         const data = {
@@ -199,7 +199,7 @@ export default {
         console.log('data', data);
         axios.defaults.xsrfCookieName = 'csrftoken';
         axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
-        axios.post('http://127.0.0.1:8000/register/', data)
+        axios.post('http://127.0.0.1:8000/signup/', data)
           .then((response) => {
             console.log(response);
             this.showToastSuccess('Usuario creado con éxito');
