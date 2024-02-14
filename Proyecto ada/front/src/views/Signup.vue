@@ -4,8 +4,7 @@
       <img src="../../public/logoSIMPARH.png" alt="Logo SIMPARH">
     </div>
     <section>
-      <form method="post">
-        <input type="hidden" name="csrfmiddlewaretoken" :value="csrf_token">
+      <form @submit.prevent="submit">
         <h1>Registro</h1>
         <div class="input-container">
           <div id="inputbox-nombreUsuarioField" class="inputbox">
@@ -29,7 +28,7 @@
         </div>
         <div class="input-container">
           <div id="inputbox-current-password" class="inputbox">
-            <input v-model="password" type="password" id="passwordField"
+            <input v-model="password" type="password" autocomplete="current-password" id="passwordField"
               title="Campo de 8-15 caracteres." />
             <label for="passwordField">Contraseña<span style="color:red"> *</span></label>
             <span class="toggle-password" @click="togglePasswordVisibility('passwordField','eyePassword')">
@@ -62,9 +61,6 @@ import { useToast } from 'vue-toastification';
 import axios from 'axios';
 
 export default {
-  // props: {
-  //   csrf_token: String
-  // },
   data() {
     return {
       nombreUsuario: '',
@@ -72,7 +68,7 @@ export default {
       apellido: '',
       email: '',
       password: '',
-      repeatPassword: '',
+      repeatPassword: ''
     };
   },
   setup() {
@@ -185,7 +181,8 @@ export default {
       return true;
     },
     submit(event) {
-      event.preventDefault(); 
+      event.preventDefault();
+      console.log(window.DEVELOPMENT_URL = "{{ DEVELOPMENT_URL }}");
 
       if (this.validate()) {
         const data = {
@@ -195,21 +192,12 @@ export default {
           email: this.email,
           password: this.password
         };
-        this.showToastSuccess('Creando usuario...');
+        const isDevelopment = process.env.NODE_ENV === 'development';
+        const baseUrl = isDevelopment ? 'http://127.0.0.1:8000/' : 'https://tu-url-de-produccion.com/';
         console.log('data', data);
-        axios.defaults.xsrfCookieName = 'csrftoken';
-        axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
-        axios.post('http://127.0.0.1:8000/signup/', data)
-          .then((response) => {
-            console.log(response);
-            this.showToastSuccess('Usuario creado con éxito');
-            this.$router.push('/login');
-          })
-          .catch((error) => {
-            console.log(error);
-            this.showToastError('Error al crear el usuario');
-          });
+        console.log('baseUrl', baseUrl);
       }
+
     },
     togglePasswordVisibility(idPassword,idEye) {
       const passwordField = document.getElementById(idPassword);
@@ -217,7 +205,6 @@ export default {
       passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
       eye.style.fill = eye.style.fill === 'grey' ? 'white' : 'grey';
     }
-
   }
 };
 </script>
@@ -406,7 +393,6 @@ button:hover {
 .has-success input {
   border-color: green;
 }
-
 .toggle-password {
   cursor: pointer;
   position: absolute;
@@ -414,6 +400,7 @@ button:hover {
   top: 50%;
   transform: translateY(-50%);
 }
+
 </style>
 
 
