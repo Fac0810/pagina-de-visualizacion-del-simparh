@@ -13,11 +13,13 @@ urlpatterns = [
     #path('mediciones/<int:id>', views.mostrarMediciones),
     path('mapakml/', views.mapakml),
 
-    # API
-    path('api/', include('myapp.urlsApi')),
-
     path('login/', views.login),
     path('signup/', views.signup, name='signup'),
     path('contacto/', views.contacto),
 
+    #TOKEN
+    path('getcsrf', views.getcsrf, name='getcsrf'),
+
+    # API
+    path('api/', include('myapp.urlsApi')),
 ]

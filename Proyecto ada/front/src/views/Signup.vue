@@ -22,7 +22,7 @@
             <label for="apellidoField">Apellido<span style="color:red"> *</span></label>
           </div>
           <div id="inputbox-emailField" class="inputbox">
-            <input v-model="email" type="email" id="emailField" title="Ingrese un mail válido" />
+            <input v-model="email" type="email" id="emailField" title="Ingrese un mail válido" autocomplete="email" />
             <label for="emailField">Email<span style="color:red"> *</span></label>
           </div>
         </div>
@@ -41,7 +41,7 @@
           </div>
           <div id="inputbox-repeatPasswordField" class="inputbox">
             <input v-model="repeatPassword" type="password" id="repeatPasswordField"
-              title="Repita la contraseña por favor." />
+              title="Repita la contraseña por favor." autocomplete="new-password" />
             <label for="repeatPasswordField">Repetir Contraseña<span style="color:red"> *</span></label>
             <span class="toggle-password" @click="togglePasswordVisibility('repeatPasswordField', 'eyePasswordRepeat')">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="20" height="20" id="eyePasswordRepeat"
@@ -74,7 +74,8 @@ export default {
       apellido: '',
       email: '',
       password: '',
-      repeatPassword: ''
+      repeatPassword: '',
+
     };
   },
   props: {
@@ -130,14 +131,24 @@ export default {
         } else {
           inputbox.style.borderColor = 'green';
         }
+        if (rule.field === 'repeatPassword' && this.password !== this.repeatPassword) {
+          this.showToastError('Las contraseñas no coinciden');
+          inputbox.style.borderColor = 'red';
+          isValid = false;
+        } else {
+          inputbox.style.borderColor = 'green';
+        }
       }
 
       return isValid;
     },
-    submit(event) {
+    async submit(event) {
       event.preventDefault();
       console.log('BACKEND_URL:', this.BACKEND_URL);
-
+      const response = await axios.get(this.BACKEND_URL + '/getcsrf');
+      const csrfToken = response.data.token;
+      console.log('response', response.data)
+      console.log('csrfToken', csrfToken);
       if (this.validate()) {
         const data = {
           nombreUsuario: this.nombreUsuario,
@@ -149,7 +160,12 @@ export default {
 
         console.log('data', data);
 
-        axios.post(`${this.BACKEND_URL}/signup`, data)
+        axios.post(`${this.BACKEND_URL}/signup`, data, {
+          headers: {
+            'X-CSRF-TOKEN': csrfToken
+          }
+        }
+        )
           .then((response) => {
             console.log('response', response);
             this.showToastSuccess('Usuario creado con éxito');
@@ -167,7 +183,7 @@ export default {
       const eye = document.getElementById(idEye);
       passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
       eye.style.fill = eye.style.fill === 'grey' ? 'white' : 'grey';
-    }
+    },
   }
 };
 </script>

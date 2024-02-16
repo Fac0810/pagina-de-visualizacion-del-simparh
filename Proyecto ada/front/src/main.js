@@ -7,11 +7,6 @@ import './assets/index.css'
 import 'leaflet/dist/leaflet.css';
 import "vue-toastification/dist/index.css";
 
-  router.beforeEach((to, from, next) => {
-    document.title = to.meta.title || 'SIMPARH';
-    next();
-  });
-
 const app = createApp(App)
 
 app.use(router)
@@ -35,5 +30,3 @@ app.use(Toast, {
 });
 
 app.mount('#app')
-
-

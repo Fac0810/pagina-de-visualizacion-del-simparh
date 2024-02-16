@@ -5,16 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crear Cuenta</title>
-  <script>
-  </script>
+  <meta name="csrf-token" content="{{ CSRF_TOKEN }}">
 </head>
 
 <body>
-  <div id="app">
-    <Signup :BACKEND_URL="'{{ BACKEND_URL }}'" />
+  
+  <div id="app" data-csrf-token="{{ CSRF_TOKEN}}">
+    <Signup />
    </div>
 
-  <script src="front/src/main.js"></script>
+<script>
+  window.CSRF_TOKEN = '{{ CSRF_TOKEN }}';
+</script>
+
 </body>
 
 </html>
