@@ -77,6 +77,12 @@ export default {
       repeatPassword: ''
     };
   },
+  props: {
+    BACKEND_URL: {
+      type: String,
+      required: true
+    }
+  },
   setup() {
     const toast = useToast();
 
@@ -130,7 +136,7 @@ export default {
     },
     submit(event) {
       event.preventDefault();
-      console.log(window.DEVELOPMENT_URL = "{{ DEVELOPMENT_URL }}");
+      console.log('BACKEND_URL:', this.BACKEND_URL);
 
       if (this.validate()) {
         const data = {
@@ -140,10 +146,19 @@ export default {
           email: this.email,
           password: this.password
         };
-        const isDevelopment = process.env.NODE_ENV === 'development';
-        const baseUrl = isDevelopment ? 'http://127.0.0.1:8000/' : 'https://tu-url-de-produccion.com/';
+
         console.log('data', data);
-        console.log('baseUrl', baseUrl);
+
+        axios.post(`${this.BACKEND_URL}/signup`, data)
+          .then((response) => {
+            console.log('response', response);
+            this.showToastSuccess('Usuario creado con éxito');
+            this.$router.push('/login');
+          })
+          .catch((error) => {
+            console.error('error', error);
+            this.showToastError('Error al crear el usuario');
+          });
       }
 
     },

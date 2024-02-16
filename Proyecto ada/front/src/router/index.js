@@ -24,6 +24,7 @@ const router = createRouter({
       name: 'signup',
       meta: { excludeNavBarFooter: true, title: 'SIMPARH' },
       component: () => import('../views/Signup.vue'),
+      props: { BACKEND_URL: import.meta.env.VITE_BACKEND_URL }
     },
     {
       path: '/mapa',

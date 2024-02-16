@@ -36,8 +36,4 @@ app.use(Toast, {
 
 app.mount('#app')
 
-router.beforeEach((to, from, next) => {
-  document.title = to.meta.title || 'SIMPARH';
-  next();
-});
 

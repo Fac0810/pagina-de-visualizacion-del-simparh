@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Cuenta</title>
-</head>
-<body>
-    <div id="app">
-      <Signup />
-    </div>
 
-    <!-- <script src="{% static 'path/to/your/vue/app/main.js' %}"></script> -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Cuenta</title>
+  <script>
+  </script>
+</head>
+
+<body>
+  <div id="app">
+    <Signup :BACKEND_URL="'{{ BACKEND_URL }}'" />
+   </div>
+
+  <script src="front/src/main.js"></script>
 </body>
+
 </html>

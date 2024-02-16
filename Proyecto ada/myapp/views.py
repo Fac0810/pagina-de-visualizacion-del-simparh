@@ -3,6 +3,9 @@ from django.http import JsonResponse
 from django.views import View
 from django.db.models import Sum
 
+# ENVIROMENT
+from django.conf import settings
+
 from datetime import datetime, timedelta
 
 ### MODELS ###
@@ -35,8 +38,21 @@ def login(request):
 
 ### SIGNUP ###
 
-# def signup(request):
-#     return render(request, 'signup.html')
+@csrf_exempt
+def signup(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        username = data.get('nombreUsuario')
+        email = data.get('email')
+        password = data.get('password')
+        try:
+            user = User.objects.create_user(username, email, password)
+            user.save()
+            return JsonResponse({'message': 'Usuario creado correctamente'}, status=201)
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=400)
+    else:
+        return render(request, 'signup.html', {'BACKEND_URL': settings.BACKEND_URL})
 
 
 ### CONTACTO ###
