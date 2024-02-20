@@ -66,6 +66,8 @@
 import { useToast } from 'vue-toastification';
 import axios from 'axios';
 
+
+
 export default {
   data() {
     return {
@@ -75,14 +77,22 @@ export default {
       email: '',
       password: '',
       repeatPassword: '',
-
+      csrfToken: null,
     };
+  },
+  async created() {
+    try {
+      const csrfResponse = await axios.post(this.BACKEND_URL + '/getcsrf');
+      this.csrfToken = csrfResponse.data.csrfToken;
+    } catch (error) {
+      console.error('Error al obtener el token CSRF', error);
+    }
   },
   props: {
     BACKEND_URL: {
       type: String,
       required: true
-    }
+    },
   },
   setup() {
     const toast = useToast();
@@ -111,7 +121,7 @@ export default {
         { field: 'apellido', nom: 'Apellido', regex: /^[a-zA-Z]*$/, errorMessage: 'Por favor ingrese un apellido alfabético' },
         { field: 'email', nom: 'E-mail', regex: /^\S+@\S+\.\S+$/, errorMessage: 'Por favor ingrese un email válido' },
         { field: 'password', nom: 'Contraseña', regex: /^.{8,15}$/, errorMessage: 'La contraseña debe tener entre 8 y 15 caracteres' },
-        { field: 'repeatPassword', nom: 'Repetir Contraseña', regex: /^.{8,15}$/, errorMessage: 'La contraseña debe tener entre 8 y 15 caracteres' }
+        { field: 'repeatPassword', nom: 'Repetir Contraseña', regex: /^.{8,15}$/, matchField: 'password', errorMessage: 'La contraseña debe tener entre 8 y 15 caracteres' }
       ];
 
       let isValid = true;
@@ -128,28 +138,24 @@ export default {
           this.showToastError(rule.errorMessage);
           inputbox.style.borderColor = 'red';
           isValid = false;
-        } else {
-          inputbox.style.borderColor = 'green';
-        }
-        if (rule.field === 'repeatPassword' && this.password !== this.repeatPassword) {
+        } else if (rule.matchField && value !== this[rule.matchField]) {
           this.showToastError('Las contraseñas no coinciden');
           inputbox.style.borderColor = 'red';
           isValid = false;
         } else {
           inputbox.style.borderColor = 'green';
+
         }
       }
-
       return isValid;
     },
     async submit(event) {
       event.preventDefault();
       console.log('BACKEND_URL:', this.BACKEND_URL);
-      const response = await axios.get(this.BACKEND_URL + '/getcsrf');
-      const csrfToken = response.data.token;
-      console.log('response', response.data)
-      console.log('csrfToken', csrfToken);
+      console.log('csrfToken:', this.csrfToken);
+
       if (this.validate()) {
+
         const data = {
           nombreUsuario: this.nombreUsuario,
           nombre: this.nombre,
@@ -157,24 +163,22 @@ export default {
           email: this.email,
           password: this.password
         };
+        try {
+          console.log('data', data);
 
-        console.log('data', data);
-
-        axios.post(`${this.BACKEND_URL}/signup`, data, {
-          headers: {
-            'X-CSRF-TOKEN': csrfToken
-          }
-        }
-        )
-          .then((response) => {
-            console.log('response', response);
-            this.showToastSuccess('Usuario creado con éxito');
-            this.$router.push('/login');
-          })
-          .catch((error) => {
-            console.error('error', error);
-            this.showToastError('Error al crear el usuario');
+          const crearUsuarioResponse = await axios.get(this.BACKEND_URL + '/crearUsuario', {
+            params: data,
+            headers: {
+              'CSRF-Token': this.csrfToken
+            }
           });
+          console.log('crearUsuarioResponse', crearUsuarioResponse);
+
+
+        } catch (error) {
+          console.error('Error al registrar usuario', error);
+          this.showToastError('Error al registrar usuario');
+        }
       }
 
     },

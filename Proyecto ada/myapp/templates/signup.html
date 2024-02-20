@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crear Cuenta</title>
-  <meta name="csrf-token" content="{{ CSRF_TOKEN }}">
 </head>
 
 <body>
-  
-  <div id="app" data-csrf-token="{{ CSRF_TOKEN}}">
-    <Signup />
-   </div>
 
-<script>
-  window.CSRF_TOKEN = '{{ CSRF_TOKEN }}';
-</script>
+  <div id="app">
+    <Signup />
+  </div>
 
 </body>
-
-</html>
