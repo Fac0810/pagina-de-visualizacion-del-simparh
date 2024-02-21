@@ -166,7 +166,7 @@ export default {
         try {
           console.log('data', data);
 
-          const crearUsuarioResponse = await axios.get(this.BACKEND_URL + '/crearUsuario', {
+          const crearUsuarioResponse = await axios.post(this.BACKEND_URL + '/crearUsuario', {
             params: data,
             headers: {
               'CSRF-Token': this.csrfToken

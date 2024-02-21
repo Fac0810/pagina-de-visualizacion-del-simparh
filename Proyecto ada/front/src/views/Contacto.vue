@@ -1,5 +1,5 @@
 <template>
-  <div class="body">
+  <div class="cuerpo">
     <div class="container">
       <h1 class="brand"><span></span> </h1>
       <div class="wrapper animated bounceInLeft">
@@ -33,8 +33,13 @@
           <h3>Contactenos: </h3>
           <form @submit.prevent="submitForm" class="contact-form">
             <p class="primerP">
-              <label >Asunto</label>
-              <input v-model="formData.asunto" type="text" name="asunto">
+              <label>Asunto</label>
+              <select v-model="formData.asunto" name="asunto">
+                <option value="" disabled>Seleccionar</option> 
+                <option value="opcion1">Pedido de información</option>
+                <option value="opcion2">Reclamo</option>
+                <option value="opcion3">Opción 3</option>
+              </select>
             </p>
             <p>
               <label>Nombre</label>
@@ -72,8 +77,8 @@ export default {
     return {
       companyInfo: {
         name: 'SIMPARH',
-        address: '5 N1234 ',
-        phone: '(221) 555-5555',
+        address: 'Calle 5 N°366 C1900 ',
+        phone: ' (0800) 444-0579',
         email: 'test@ada.test'
       },
       formData: {
@@ -151,7 +156,7 @@ export default {
   box-sizing: border-box;
 }
 
-.body {
+.cuerpo {
   background: #92bde7;
   color: #485e74;
   line-height: 1.6;
@@ -163,7 +168,7 @@ export default {
   max-width: 1170px;
   margin-left: auto;
   margin-right: auto;
-  padding: 1em;
+  /* padding: 1em; */
 }
 
 ul {
@@ -246,6 +251,10 @@ ul {
   grid-column: span 2;
 }
 
+select{
+  width: 100%;
+}
+
 .contact-form label {
   display: block;
 }
@@ -262,13 +271,13 @@ ul {
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 1em;
+  /* padding: 1em; */
   border: 1px solid #c9e6ff;
 }
 
 .contact-form textarea {
   resize: none;
-  height: 150px;
+  height: 80px;
 }
 
 .contact-form button {
@@ -301,4 +310,5 @@ ul {
   .brand {
     text-align: left;
   }
-}</style>
+}
+</style>

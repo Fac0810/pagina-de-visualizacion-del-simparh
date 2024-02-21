@@ -39,6 +39,9 @@ from django.core.validators import validate_email
 # HASH
 from django.contrib.auth.hashers import make_password
 
+# DECORATORS
+from django.views.decorators.http import require_POST
+
 from datetime import datetime, timedelta
 
 
@@ -93,12 +96,8 @@ def validar_datos_registro(username, nombre, apellido, email, password):
 
 
 @csrf_protect
-@requiere_POST
+@require_POST
 def crearUsuario(request):
-
-    if request.method == "POST":
-        return HttpResponse('La solicitud POST se ha procesado correctamente.')
-        
         try:
             nombre_usuario = request.POST.get("nombreUsuario")
             nombre = request.POST.get("nombre")
@@ -106,7 +105,6 @@ def crearUsuario(request):
             email = request.POST.get("email")
             password = request.POST.get("password")
             
-            return JsonResponse({"message": "Usuario creado correctamente"}, status=201)
 
             # Validación
             error_message = validar_datos_registro(
@@ -147,11 +145,8 @@ def crearUsuario(request):
         except ValidationError as e:
             return JsonResponse({"error": e.message}, status=400)
 
-        else:
-            return JsonResponse({"error": "Error al crear el usuario"}, status=405)
 
-    else:
-        return JsonResponse({"error": "Método no permitido"}, status=405)
+
 
 
 ### TOKEN ###

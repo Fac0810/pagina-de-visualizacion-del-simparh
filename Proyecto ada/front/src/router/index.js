@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import MapaEmas from '../views/MapaEmas.vue'
-import Contacto from '../views/Contacto.vue'
 import GraficosEmas from '../views/GraficosEmas.vue'
 
 const router = createRouter({
@@ -42,8 +41,25 @@ const router = createRouter({
       path: '/contacto',
       name: 'contacto',
       meta: { title: 'Contacto' },
-      component: Contacto
-    }
+      component: () => import('../views/Contacto.vue')
+    },{
+      path: '/perfil',
+      name: 'perfil',
+      meta: { title: 'Perfil' },
+      component: () => import('../views/Perfil.vue')
+    },
+    {
+      path: '/panel',
+      name: 'panelcontrol',
+      meta: { title: 'PanelControlUsuario' },
+      component: () => import('../views/PanelControlUsuario.vue')
+    },
+    {
+      path: '/mensajeria',
+      name: 'mensajeria',
+      meta: { title: 'Mensajeria' },
+      component: () => import('../views/Mensajeria.vue')
+    },
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
