@@ -4,6 +4,12 @@ from phonenumber_field.formfields import PhoneNumberField
 
 #Aca se crean los formularios que sean necesarios
 
+class LoginForm (forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+    
+
+
 class FormularioContacto(forms.Form):
 
     asunto = forms.ModelChoiceField(queryset=None)
@@ -18,3 +24,4 @@ class FormularioContacto(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['asunto'].queryset = Asunto.objects.all()
+

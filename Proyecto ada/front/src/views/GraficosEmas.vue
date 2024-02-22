@@ -4,7 +4,7 @@ import Grafico from '../components/Grafico.vue'
 
 <template>
   <main>
-    aca etan los graficos
+    
     <Grafico/>
   </main>
 </template>
