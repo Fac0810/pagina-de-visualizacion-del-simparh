@@ -162,6 +162,7 @@ export default {
   line-height: 1.6;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding: 1em;
+  /* height: calc(100vh - 88px); */
 }
 
 .container {

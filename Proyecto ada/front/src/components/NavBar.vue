@@ -133,7 +133,7 @@ export default {
   outline: 0;
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* space-between; */
   background: #0DA8C7; /* Use the appropriate accent color */
   min-width: 220px;
   border: 0;

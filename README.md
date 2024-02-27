@@ -68,6 +68,7 @@ Necesario installar:
 		python -m venv venv (como administrador)
 
 		python manage.py runserver
+		python manage.py make migration
 		python manage.py migrate
 
 	Para correr vite-vue run:  
