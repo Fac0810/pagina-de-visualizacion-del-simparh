@@ -1,17 +1,66 @@
 <template>
-    <div class="cuerpo">
-        <div class="container">
-            <h1 class="brand"><span></span></h1>
-            <div class="wrapper animated bounceInLeft">
-                <div class="company-info">
-                </div>
-            </div>
+  <div class="cuerpo">
+    <div class="container">
+      <h1 class="brand"><span></span></h1>
+      <div class="wrapper animated bounceInLeft">
+        <div class="company-info">
+          <h3>{{ companyInfo.name }}</h3>
+          <ul>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="25" fill="#92bde7">
+                <path
+                  d="M352 320c88.4 0 160-71.6 160-160c0-15.3-2.2-30.1-6.2-44.2c-3.1-10.8-16.4-13.2-24.3-5.3l-76.8 76.8c-3 3-7.1 4.7-11.3 4.7H336c-8.8 0-16-7.2-16-16V118.6c0-4.2 1.7-8.3 4.7-11.3l76.8-76.8c7.9-7.9 5.4-21.2-5.3-24.3C382.1 2.2 367.3 0 352 0C263.6 0 192 71.6 192 160c0 19.1 3.4 37.5 9.5 54.5L19.9 396.1C7.2 408.8 0 426.1 0 444.1C0 481.6 30.4 512 67.9 512c18 0 35.3-7.2 48-19.9L297.5 310.5c17 6.2 35.4 9.5 54.5 9.5zM80 408a24 24 0 1 1 0 48 24 24 0 1 1 0-48z" />
+              </svg>
+              {{ companyInfo.datos }}
+            </li>
+          </ul>
         </div>
+        <div style="background-color: #F9FEFF;">
+          <div class="calendario">
+            <div>
+              <label for="select-year">Seleccione un año:</label>
+              <select class="selectYear" id="select-year" v-model="selectedYear">
+                <option v-for="year in years" :key="year" :value="year">{{ year }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
-
+<script>
+export default {
+  data() {
+    return {
+      companyInfo: {
+        name: 'Panel de control de usuario',
+        datos: 'Mantenimiento',
+      },
+      years: [],
+      selectedYear: null,
+    }
+  },
+  mounted() {
+    const currentYear = new Date().getFullYear();
+    for (let i = currentYear; i >= currentYear - 2; i--) {
+      this.years.push(i);
+    }
+    this.selectedYear = currentYear;
+  }
+}
+</script>
 
 <style>
+.selectYear {
+  width: 20%;
+  padding: 1em;
+  border: 0px solid #c9e6ff;
+}
+.table {
+  padding: 20px;
+}
+
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
@@ -163,7 +212,7 @@ ul {
   grid-column: span 2;
 }
 
-select{
+select {
   width: 100%;
 }
 

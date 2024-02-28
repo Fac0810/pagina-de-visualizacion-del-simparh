@@ -98,55 +98,48 @@ def validar_datos_registro(username, nombre, apellido, email, password):
 @csrf_protect
 @require_POST
 def crearUsuario(request):
-        try:
-            nombre_usuario = request.POST.get("nombreUsuario")
-            nombre = request.POST.get("nombre")
-            apellido = request.POST.get("apellido")
-            email = request.POST.get("email")
-            password = request.POST.get("password")
-            
+    try:
+        nombre_usuario = request.POST.get("nombreUsuario")
+        nombre = request.POST.get("nombre")
+        apellido = request.POST.get("apellido")
+        email = request.POST.get("email")
+        password = request.POST.get("password")
 
-            # Validación
-            error_message = validar_datos_registro(
-                nombre_usuario, nombre, apellido, email, password
-            )
-            if error_message:
-                messages.error(request, error_message)
-                return JsonResponse({"error": error_message}, status=400)
+        # Validación
+        error_message = validar_datos_registro(
+            nombre_usuario, nombre, apellido, email, password
+        )
+        if error_message:
+            messages.error(request, error_message)
+            return JsonResponse({"error": error_message}, status=400)
 
-            if (
-                Usuario.objects.filter(nombre_usuario=nombre_usuario).exists()
-                or Usuario.objects.filter(email=email).exists()
-            ):
-                messages.error(request, "El usuario o email ya existen")
-                return JsonResponse(
-                    {"error": "El usuario o email ya existen"}, status=400
-                )
+        if (
+            Usuario.objects.filter(nombre_usuario=nombre_usuario).exists()
+            or Usuario.objects.filter(email=email).exists()
+        ):
+            messages.error(request, "El usuario o email ya existen")
+            return JsonResponse({"error": "El usuario o email ya existen"}, status=400)
 
-            usuario = Usuario.objects.create(
-                username=username,
-                nombre=nombre,
-                apellido=apellido,
-                email=email,
-                password=make_password(password),
-                superuser=False,
-                activo=True,
-                tipo_usuario_id=1,
-                fecha_inicio = datetime.now(),
-                ultima_conexion = datetime.now(),
-                
-            )
-            usuario.save()
-            return JsonResponse({"message": "Usuario creado correctamente"}, status=201)
+        usuario = Usuario.objects.create(
+            nombre_usuario=nombre_usuario,
+            nombre=nombre,
+            apellido=apellido,
+            email=email,
+            password=make_password(password),
+            superuser=False,
+            activo=True,
+            tipo_usuario_id=1,
+            fecha_inicio=datetime.now(),
+            ultima_conexion=datetime.now(),
+        )
+        usuario.save()
+        return JsonResponse({"message": "Usuario creado correctamente"}, status=201)
 
-        except IntegrityError:
-            return JsonResponse({"error": "El usuario o email ya existen"}, status=500)
+    except IntegrityError:
+        return JsonResponse({"error": "El usuario o email ya existen"}, status=500)
 
-        except ValidationError as e:
-            return JsonResponse({"error": e.message}, status=400)
-
-
-
+    except ValidationError as e:
+        return JsonResponse({"error": e.message}, status=400)
 
 
 ### TOKEN ###
