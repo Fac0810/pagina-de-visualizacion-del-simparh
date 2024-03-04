@@ -1,12 +1,12 @@
 from rest_framework import routers
-from .viewsets import EstacionViewSet
+from .viewsets import EstacionViewSet, MedicionPluviometricaViewSet
 from django.urls import path
 
 from .views import check_mantenimiento_post, estaciones_mantenimiento_reciente
 
 router = routers.SimpleRouter()
 router.register('estaciones', EstacionViewSet)
-#router.register('mediciones', MedicionViewSet)
+router.register('mediciones_pluviometricas', MedicionPluviometricaViewSet)
 
 urlpatterns = [
     path('checkMantenimiento/', check_mantenimiento_post, name='check-mantenimiento-post'),

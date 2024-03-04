@@ -58,6 +58,7 @@ Necesario installar:
 		pip install django-import-export
 		pip install djangorestframework
 		pip install django-cors-headers
+		pip install psycopg2
 
 		Resumen:
 		
@@ -112,3 +113,17 @@ Necesario installar:
 	para flowbite
 	}
 	
+	Para la base de datos develop:
+
+		1)Es necesario instalar Postgress 16.2
+		2)Crear una base de datos con las siguientes caracteristicas
+		{
+			'NAME': 'SIMPARH',
+			'USER': 'postgres',
+			'PASSWORD': 'SIMPARHpgAdmin',
+			'HOST': 'localhost',
+			'PORT': '5432',
+		}
+		3)Ejecutar "python manage.py migrate"
+
+

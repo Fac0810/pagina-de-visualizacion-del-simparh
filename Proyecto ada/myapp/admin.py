@@ -5,6 +5,8 @@ from django.contrib import admin
 from .models import Estacion, Asunto, Contacto
 
 # Register your models here.
+# Se utiliza para mostrar y tener registro sobre los distintos elementos de la base de datos.
+# Si se utiliza "list_ display" se mostraran estos atributos en un listado.
 """
 @admin.register(Estacion)
 class EstacionAdmin(admin.ModelAdmin):

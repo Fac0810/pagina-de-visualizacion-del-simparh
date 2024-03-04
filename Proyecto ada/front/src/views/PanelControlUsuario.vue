@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       companyInfo: {
-        name: 'Panel de control de usuario',
+        name: 'Panel de control',
         datos: 'Mantenimiento',
       },
       years: [],
