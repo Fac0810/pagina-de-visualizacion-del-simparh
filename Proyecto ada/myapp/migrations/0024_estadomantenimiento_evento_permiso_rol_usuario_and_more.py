@@ -4,9 +4,13 @@ import datetime
 import django.db.models.deletion
 from django.db import migrations, models
 
+def create_default_estadomantenimiento(apps, schema_editor):
+    EstadoMantenimiento = apps.get_model('myapp', 'EstadoMantenimiento')
+    
+    if not EstadoMantenimiento.objects.filter(id=1).exists():
+        EstadoMantenimiento.objects.create(id=1, nombre='Default EstadoMantenimiento')
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('myapp', '0023_alter_estacion_desde_alter_estacion_fuente_and_more'),
     ]
@@ -19,6 +23,8 @@ class Migration(migrations.Migration):
                 ('nombre', models.CharField(max_length=40)),
             ],
         ),
+        migrations.RunPython(create_default_estadomantenimiento),
+
         migrations.CreateModel(
             name='Evento',
             fields=[

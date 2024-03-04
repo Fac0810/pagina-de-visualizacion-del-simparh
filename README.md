@@ -14,6 +14,13 @@ Objetivos:
 Participantes:
 
 	·Facundo Cadaa
+	·Sebastian Baldini
+	·Franco Serra
+	·Luciano Otero Nolte
+	·Facundo Medina
+	·Iara Caruso
+	·Mariano Gandin
+
 
 Necesario installar:
 	Python{
@@ -43,7 +50,8 @@ Necesario installar:
 		xlrd                     2.0.1
 		xlwt                     1.3.0
 
-	Para eso ejecutamos:
+	Para instalar dependencias:
+
 		pip install Django
 		pip install django-phonenumbers
 		pip install django-phonenumber-field
@@ -51,6 +59,24 @@ Necesario installar:
 		pip install djangorestframework
 		pip install django-cors-headers
 		pip install psycopg2
+
+		Resumen:
+		
+		pip install Django django-phonenumbers django-phonenumber-field django-import-export djangorestframework django-cors-headers
+
+	Para correr el local server:
+
+		python -m venv venv (como administrador)
+
+		python manage.py runserver
+		python manage.py migrate
+
+	Para correr vite-vue run:  
+	
+		cd front
+		npm install   
+		npm run dev 
+
 
 	}
 	JS{

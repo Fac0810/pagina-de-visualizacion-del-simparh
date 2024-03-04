@@ -2,6 +2,13 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from datetime import datetime , date
 
+from django.contrib.auth.models import AbstractUser
+
+#Seeder
+from django.dispatch import receiver
+from django.db.models.signals import post_migrate
+
+
 # Aca se encuentran los modelos de los objetos de datos. Django los utiliza para hacer las migraciones
 # haciendo que estos modelos se reflejen en la base de datos
 
@@ -252,6 +259,18 @@ class EmaSensor(models.Model):
 
 # Usuarios, roles y permisos
     
+class TipoUsuario(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    tipo = models.CharField(max_length=60, null=False, blank=False)
+    
+@receiver(models.signals.post_migrate, dispatch_uid="seed_tipo_usuario")
+def seed_tipo_usuario(sender, **kwargs):
+    TipoUsuario.objects.get_or_create(id=1, tipo="Usuario")
+    TipoUsuario.objects.get_or_create(id=2, tipo="Operador")
+    TipoUsuario.objects.get_or_create(id=3, tipo="Desarrollador")
+    TipoUsuario.objects.get_or_create(id=4, tipo="Administrador")
+    TipoUsuario.objects.get_or_create(id=5, tipo="Super Administrador")
+    
 class Usuario(models.Model):
     id = models.BigAutoField(primary_key=True)
     nombre_usuario = models.CharField(max_length=60, null=False, blank=False)
@@ -259,7 +278,12 @@ class Usuario(models.Model):
     apellido = models.CharField(max_length=60, null=False, blank=False)
     email = models.EmailField(null=False, blank=False)
     fecha_inicio = models.DateField(default=datetime.now)
-    ultima_coneccion = models.DateTimeField(default=datetime.now)
+    ultima_conexion = models.DateTimeField(default=datetime.now)
+    superuser = models.BooleanField(default=False)
+    activo = models.BooleanField(default=True)
+    tipo_usuario = models.ForeignKey(TipoUsuario, on_delete=models.SET_DEFAULT, default=1)
+    
+    
 
 class Rol(models.Model):
     id = models.BigAutoField(primary_key=True)

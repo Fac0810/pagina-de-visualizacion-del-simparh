@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='contacto',
             name='localidad',
-            field=models.CharField(max_length=100),
+            field=models.CharField(max_length=100, default=''),
         ),
         migrations.AlterField(
             model_name='contacto',
@@ -30,12 +30,12 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='contacto',
             name='nombre',
-            field=models.CharField(max_length=100),
+            field=models.CharField(max_length=100, default=''),
         ),
         migrations.AlterField(
             model_name='contacto',
             name='partido',
-            field=models.CharField(max_length=100),
+            field=models.CharField(max_length=100, default=''),
         ),
         migrations.AlterField(
             model_name='contacto',
