@@ -1,6 +1,6 @@
 #aca se serializan los models para hacerlos API
 from rest_framework import serializers
-from .models import Estacion
+from .models import Estacion, MedicionPluviometrica
 ""
 class EstacionSerializer(serializers.ModelSerializer):
 
@@ -9,18 +9,17 @@ class EstacionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Estacion
         fields = '__all__'
-"""
-    def get_mediciones(self, obj):
+
+    def get_mediciones_pluviometricas(self, obj):
         try:
-            meds = Medicion.objects.filter(estacion_id=obj.id).order_by("fecha")
+            meds = MedicionPluviometrica.objects.filter(estacion_id=obj.id).order_by("fecha")
             prim = meds.first().fecha
             ulti = meds.last().fecha
             return {"primera":prim, "ultima":ulti}
         except:
             return {"primera":"", "ultima":""}
             
-class MedicionSerializer(serializers.ModelSerializer):
+class MedicionPluviometricaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Medicion
+        model = MedicionPluviometrica
         fields = '__all__'
-"""
